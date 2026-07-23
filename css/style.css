@@ -126,12 +126,21 @@ color:white;
 
 }
 
-.course.selected{
+.course{
+    width:100%;
+    height:60px;
+    border:none;
+    border-radius:15px;
+    background:#f2f2f2;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.2s;
+}
 
+.course.selected{
     background:#0078d7;
     color:white;
     border:2px solid #005fa3;
-
 }
 
 .hint{
