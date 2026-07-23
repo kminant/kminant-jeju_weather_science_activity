@@ -4,11 +4,14 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>제주기상과학홍보관</title>
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet"
+href="css/style.css">
 
 </head>
 
@@ -16,7 +19,7 @@
 
 <header>
 
-<h1>🌤 제주기상과학홍보관</h1>
+<h1>☁️ 제주기상과학홍보관</h1>
 
 <p>AI와 함께 배우는 기상·기후 체험</p>
 
@@ -24,7 +27,7 @@
 
 <main>
 
-<!-- 오늘의 날씨 -->
+<!-- 날씨 -->
 
 <section class="card">
 
@@ -32,15 +35,17 @@
 
 <div class="weather">
 
-<p>🌡 기온 <span id="temp">--℃</span></p>
+<div>🌡 기온 <span id="temp">--℃</span></div>
 
-<p>💧 습도 <span id="humid">--%</span></p>
+<div>🥵 체감온도 <span id="feel">--℃</span></div>
 
-<p>🌬 풍속 <span id="wind">--m/s</span></p>
+<div>💧 습도 <span id="humid">--%</span></div>
 
-<p>🧭 풍향 <span id="dir">--</span></p>
+<div>🌬 풍속 <span id="wind">--m/s</span></div>
 
-<p>☔ 강수량 <span id="rain">--mm</span></p>
+<div>🧭 풍향 <span id="dir">--</span></div>
+
+<div>☔ 강수량 <span id="rain">--mm</span></div>
 
 </div>
 
@@ -54,9 +59,31 @@
 
 <p id="recommend">
 
-오늘의 기상정보를 분석하고 있습니다.
+오늘의 기상정보를 분석중입니다.
 
 </p>
+
+</section>
+
+<!-- 오늘의 미션 -->
+
+<section class="card">
+
+<h2>🎯 오늘의 기상 탐험</h2>
+
+<p>
+
+현재 기온과 체감온도의 차이는
+
+얼마일까요?
+
+</p>
+
+<button class="hint">
+
+힌트 보기
+
+</button>
 
 </section>
 
@@ -64,49 +91,35 @@
 
 <section class="card">
 
-<h2>🚶 관람 코스</h2>
+<h2>🚶 관람코스</h2>
 
-<label>
+<div class="option-group">
 
-<input type="radio"
+<button class="option selected"
 
-name="course"
+data-course="inside">
 
-value="inside"
+🏢 홍보관만
 
-checked>
+</button>
 
-홍보관만 관람
+<button class="option"
 
-</label>
+data-course="outside">
 
-<br><br>
+🌳 야외관측장비
 
-<label>
+</button>
 
-<input type="radio"
+<button class="option"
 
-name="course"
+data-course="all">
 
-value="outside">
+🏛 공신정터 포함
 
-홍보관 + 야외관측장비
+</button>
 
-</label>
-
-<br><br>
-
-<label>
-
-<input type="radio"
-
-name="course"
-
-value="all">
-
-홍보관 + 야외관측장비 + 공신정터
-
-</label>
+</div>
 
 </section>
 
@@ -116,53 +129,39 @@ value="all">
 
 <h2>👤 참여자</h2>
 
-<label>
+<div class="option-group">
 
-<input type="radio"
+<button class="level selected"
 
-name="level"
+data-level="elementary">
 
-value="elementary"
+😀 초등학생
 
-checked>
+</button>
 
-초등학생
+<button class="level"
 
-</label>
+data-level="middle">
 
-<br><br>
+🧑 중·고등학생
 
-<label>
+</button>
 
-<input type="radio"
+<button class="level"
 
-name="level"
+data-level="adult">
 
-value="middle">
+👨 성인
 
-중·고등학생
+</button>
 
-</label>
-
-<br><br>
-
-<label>
-
-<input type="radio"
-
-name="level"
-
-value="adult">
-
-성인
-
-</label>
+</div>
 
 </section>
 
-<button id="startBtn">
+<button id="start">
 
-체험 시작
+🚀 체험 시작
 
 </button>
 
