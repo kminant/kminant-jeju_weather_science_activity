@@ -140,9 +140,9 @@ main{
 }
 
 
-/* ============================= */
-/* 날씨 */
-/* ============================= */
+/* ==========================
+   4. 오늘의 제주 날씨
+========================== */
 
 .weather-grid{
 
@@ -156,7 +156,9 @@ main{
 
 .weather-item{
 
-    background:#f7fbff;
+    background:#F8FBFF;
+
+    border:1px solid #DCEAF7;
 
     border-radius:18px;
 
@@ -164,34 +166,85 @@ main{
 
     text-align:center;
 
+    transition:.2s;
+
+}
+
+.weather-item:hover{
+
+    transform:translateY(-2px);
+
 }
 
 .weather-icon{
 
-    font-size:34px;
+    font-size:28px;
+
+    margin-bottom:8px;
 
 }
 
 .weather-name{
 
-    margin-top:8px;
+    font-size:15px;
 
-    color:#666;
+    color:var(--sub);
 
 }
 
 .weather-value{
 
-    margin-top:10px;
+    margin-top:8px;
 
     font-size:24px;
 
-    font-weight:bold;
+    font-weight:700;
 
-    color:#0078d7;
+    color:var(--main);
 
 }
 
+.weather-main{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:15px;
+
+    margin-bottom:18px;
+
+}
+
+.temperature{
+
+    background:linear-gradient(135deg,#0078D7,#4FAEFF);
+
+    color:white;
+
+    border-radius:20px;
+
+    padding:20px;
+
+    text-align:center;
+
+}
+
+.temp-title{
+
+    font-size:17px;
+
+}
+
+.temp-number{
+
+    margin-top:12px;
+
+    font-size:42px;
+
+    font-weight:700;
+
+}
 
 /* ============================= */
 /* AI 추천 */
