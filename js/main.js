@@ -18,7 +18,7 @@ function saveCourses(){
 
     const selected = [];
 
-    document.querySelectorAll(".course.selected").forEach(btn=>{
+    document.querySelectorAll(".course.selected").forEach(btn => {
 
         selected.push(btn.dataset.course);
 
