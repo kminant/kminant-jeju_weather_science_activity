@@ -1,20 +1,32 @@
 // 관람코스
 
-const options=document.querySelectorAll(".option");
+const courseButtons = document.querySelectorAll(".course");
 
-options.forEach(btn=>{
+courseButtons.forEach(btn => {
 
-btn.onclick=()=>{
+    btn.addEventListener("click", () => {
 
-options.forEach(b=>b.classList.remove("selected"));
+        btn.classList.toggle("selected");
 
-btn.classList.add("selected");
+        saveCourses();
 
-localStorage.setItem("course",btn.dataset.course);
-
-}
+    });
 
 });
+
+function saveCourses(){
+
+    const selected = [];
+
+    document.querySelectorAll(".course.selected").forEach(btn=>{
+
+        selected.push(btn.dataset.course);
+
+    });
+
+    localStorage.setItem("courses", JSON.stringify(selected));
+
+}
 
 // 참여자
 
