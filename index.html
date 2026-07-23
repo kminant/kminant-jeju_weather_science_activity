@@ -3,162 +3,316 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+    <title>제주기상과학홍보관 AI 스마트 가이드</title>
 
-<title>제주기상과학홍보관</title>
-
-<link rel="stylesheet"
-href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
 
-<header>
+    <!-- ================= HEADER ================= -->
 
-<h1>☁️ 제주기상과학홍보관</h1>
+    <header class="header">
 
-<p>AI와 함께 배우는 기상·기후 체험</p>
+        <h1>☁️ 제주기상과학홍보관</h1>
 
-</header>
+        <p>AI와 함께 배우는 기상·기후 체험</p>
 
-<main>
+    </header>
 
-<!-- 날씨 -->
+    <main>
 
-<section class="card">
+        <!-- ================= 오늘의 제주 날씨 ================= -->
 
-<h2>📍 오늘의 제주 날씨</h2>
+        <section class="card">
 
-<div class="weather">
+            <div class="section-title">
 
-<div>🌡 기온 <span id="temp">--℃</span></div>
+                📍 오늘의 제주 날씨
 
-<div>🥵 체감온도 <span id="feel">--℃</span></div>
+            </div>
 
-<div>💧 습도 <span id="humid">--%</span></div>
+            <div class="weather-grid">
 
-<div>🌬 풍속 <span id="wind">--m/s</span></div>
+                <div class="weather-item">
 
-<div>🧭 풍향 <span id="dir">--</span></div>
+                    <div class="weather-icon">🌡</div>
 
-<div>☔ 강수량 <span id="rain">--mm</span></div>
+                    <div class="weather-name">기온</div>
 
-</div>
+                    <div id="temp" class="weather-value">--℃</div>
 
-</section>
+                </div>
 
-<!-- AI 추천 -->
+                <div class="weather-item">
 
-<section class="card">
+                    <div class="weather-icon">🥵</div>
 
-<h2>🤖 AI 추천</h2>
+                    <div class="weather-name">체감온도</div>
 
-<p id="recommend">
+                    <div id="feel" class="weather-value">--℃</div>
 
-오늘의 기상정보를 분석중입니다.
+                </div>
 
-</p>
+                <div class="weather-item">
 
-</section>
+                    <div class="weather-icon">💧</div>
 
-<!-- 오늘의 미션 -->
+                    <div class="weather-name">습도</div>
 
-<section class="card">
+                    <div id="humid" class="weather-value">--%</div>
 
-<h2>🎯 오늘의 기상 탐험</h2>
+                </div>
 
-<p>
+                <div class="weather-item">
 
-현재 기온과 체감온도의 차이는
+                    <div class="weather-icon">🌬</div>
 
-얼마일까요?
+                    <div class="weather-name">풍속</div>
 
-</p>
+                    <div id="wind" class="weather-value">--m/s</div>
 
-<button class="hint">
+                </div>
 
-힌트 보기
+                <div class="weather-item">
 
-</button>
+                    <div class="weather-icon">🧭</div>
 
-</section>
+                    <div class="weather-name">풍향</div>
 
-<!-- 관람코스 -->
+                    <div id="dir" class="weather-value">--</div>
 
-<section class="card">
+                </div>
 
-<h2>🚶 관람코스</h2>
+                <div class="weather-item">
 
-<div class="option-group">
+                    <div class="weather-icon">☔</div>
 
-<button class="course selected"
-data-course="inside">
-🏢 제주기상과학홍보관
-</button>
+                    <div class="weather-name">강수량</div>
 
-<button class="course"
-data-course="outside">
-🌳 지상기상관측장비
-</button>
+                    <div id="rain" class="weather-value">--mm</div>
 
-<button class="course"
-data-course="all">
-🏛 역사문화공간
-</button>
+                </div>
 
-</div>
+            </div>
 
-</section>
+        </section>
 
-<!-- 참여자 -->
+        <!-- ================= AI 추천 ================= -->
 
-<section class="card">
+        <section class="card">
 
-<h2>👤 참여자</h2>
+            <div class="section-title">
 
-<div class="option-group">
+                🤖 AI 추천
 
-<button class="level selected"
+            </div>
 
-data-level="elementary">
+            <div id="recommend" class="recommend">
 
-😀 초등학생
+                오늘의 기상정보를 분석하고 있습니다.
 
-</button>
+            </div>
 
-<button class="level"
+        </section>
 
-data-level="middle">
+        <!-- ================= 오늘의 기상 탐험 ================= -->
 
-🧑 중·고등학생
+        <section class="card">
 
-</button>
+            <div class="section-title">
 
-<button class="level"
+                🎯 오늘의 기상 탐험
 
-data-level="adult">
+            </div>
 
-👨 성인
+            <p class="mission">
 
-</button>
+                현재 기온과 체감온도의 차이는 얼마일까요?
 
-</div>
+            </p>
 
-</section>
+            <button id="hintBtn" class="yellow-btn">
 
-<button id="start">
+                💡 AI에게 힌트 받기
 
-🚀 체험 시작
+            </button>
 
-</button>
+        </section>
 
-</main>
+        <!-- ================= 관람코스 ================= -->
 
-<script src="js/main.js"></script>
+        <section class="card">
+
+            <div class="section-title">
+
+                🚶 어디까지 탐험할까요?
+
+            </div>
+
+            <div class="course-list">
+
+                <button class="course selected" data-course="inside">
+
+                    <div class="course-icon">🏢</div>
+
+                    <div class="course-title">
+
+                        제주기상과학홍보관
+
+                    </div>
+
+                    <div class="course-desc">
+
+                        실내 기상·기후 전시를 관람합니다.
+
+                    </div>
+
+                    <div class="course-time">
+
+                        ⏱ 약 20분
+
+                    </div>
+
+                </button>
+
+                <button class="course" data-course="outside">
+
+                    <div class="course-icon">🌳</div>
+
+                    <div class="course-title">
+
+                        지상기상관측장비
+
+                    </div>
+
+                    <div class="course-desc">
+
+                        실제 관측장비를 가까이에서 살펴봅니다.
+
+                    </div>
+
+                    <div class="course-time">
+
+                        ⏱ 약 15분
+
+                    </div>
+
+                </button>
+
+                <button class="course" data-course="history">
+
+                    <div class="course-icon">🏛</div>
+
+                    <div class="course-title">
+
+                        역사문화공간
+
+                    </div>
+
+                    <div class="course-desc">
+
+                        공신정터와 제주의 기상 역사를 알아봅니다.
+
+                    </div>
+
+                    <div class="course-time">
+
+                        ⏱ 약 15분
+
+                    </div>
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- ================= 참여자 ================= -->
+
+        <section class="card">
+
+            <div class="section-title">
+
+                👤 참여자 선택
+
+            </div>
+
+            <div class="level-list">
+
+                <button class="level selected" data-level="elementary">
+
+                    <div class="level-icon">😀</div>
+
+                    <div class="level-title">
+
+                        초등학생
+
+                    </div>
+
+                    <div class="level-desc">
+
+                        쉽고 재미있는 설명
+
+                    </div>
+
+                </button>
+
+                <button class="level" data-level="middle">
+
+                    <div class="level-icon">🧑</div>
+
+                    <div class="level-title">
+
+                        중·고등학생
+
+                    </div>
+
+                    <div class="level-desc">
+
+                        탐구 중심 설명
+
+                    </div>
+
+                </button>
+
+                <button class="level" data-level="adult">
+
+                    <div class="level-icon">👨</div>
+
+                    <div class="level-title">
+
+                        성인
+
+                    </div>
+
+                    <div class="level-desc">
+
+                        심화 해설 제공
+
+                    </div>
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- ================= 시작 ================= -->
+
+        <button id="startBtn">
+
+            🚀 체험 시작하기
+
+        </button>
+
+    </main>
+
+    <script src="js/main.js"></script>
 
 </body>
 
