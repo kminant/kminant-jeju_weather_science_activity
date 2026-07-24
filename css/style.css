@@ -121,6 +121,28 @@ main{
 
     box-shadow:var(--shadow);
 
+    animation:fadeUp .4s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(15px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
 }
 
 .section-title{
@@ -359,6 +381,15 @@ main{
 .course:hover{
 
     transform:translateY(-4px);
+
+}
+
+.course:active,
+.level:active,
+#startBtn:active,
+.yellow-btn:active{
+
+    transform:scale(0.97);
 
 }
 
