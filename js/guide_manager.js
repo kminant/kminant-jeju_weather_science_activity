@@ -42,3 +42,18 @@ const guideManager = {
     }
 
 };
+
+const exhibitOrder = [
+    "timeline",
+    "amosmap",
+    "volcano",
+    "tornado",
+    "earthquake",
+    "forecast",
+    "climatechange",
+    "history100",
+    "oldequipment",
+    "surfaceobs",
+    "gongsinjeong",
+    "cheugugi"
+];
