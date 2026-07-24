@@ -31,10 +31,7 @@ function saveCourses(){
 
     });
 
-    localStorage.setItem(
-        "courses",
-        JSON.stringify(selectedCourses)
-    );
+    saveCourses(selected);
 
 }
 
@@ -57,9 +54,8 @@ levelButtons.forEach(button=>{
 
         button.classList.add("selected");
 
-        localStorage.setItem(
-            "level",
-            button.dataset.level
+        saveLevel(
+          btn.dataset.level
         );
 
     });
