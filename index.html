@@ -14,13 +14,17 @@
 
 <body>
 
-    <!-- ================= HEADER ================= -->
+    <!-- ================= Header ================= -->
 
     <header class="header">
 
         <h1>☁️ 제주기상과학홍보관</h1>
 
-        <p>AI와 함께 배우는 기상·기후 체험</p>
+        <p>AI 스마트 가이드</p>
+
+        <span class="header-sub">
+            실시간 제주 날씨와 함께 기상여행을 시작해보세요.
+        </span>
 
     </header>
 
@@ -28,97 +32,126 @@
 
         <!-- ================= 오늘의 제주 날씨 ================= -->
 
-<div class="weather-main">
+        <section class="card">
 
-    <div class="temperature">
+            <div class="section-title">
+                📍 오늘의 제주 날씨
+            </div>
 
-        <div class="temp-title">
-            🌡 현재 기온
-        </div>
+            <div class="weather-main">
 
-        <div id="temp" class="temp-number">
-            --℃
-        </div>
+                <div class="temperature">
 
-    </div>
+                    <div class="temp-title">
+                        🌡 현재 기온
+                    </div>
 
-    <div class="temperature">
+                    <div id="temp" class="temp-number">
+                        --℃
+                    </div>
 
-        <div class="temp-title">
-            🥵 체감온도
-        </div>
+                </div>
 
-        <div id="feel" class="temp-number">
-            --℃
-        </div>
+                <div class="temperature">
 
-    </div>
+                    <div class="temp-title">
+                        🥵 체감온도
+                    </div>
 
-</div>
+                    <div id="feel" class="temp-number">
+                        --℃
+                    </div>
 
-<div class="weather-grid">
+                </div>
 
-    <div class="weather-item">
+            </div>
 
-        <div class="weather-icon">💧</div>
+            <div class="weather-grid">
 
-        <div class="weather-name">습도</div>
+                <div class="weather-item">
 
-        <div id="humid" class="weather-value">--%</div>
+                    <div class="weather-icon">💧</div>
 
-    </div>
+                    <div class="weather-name">습도</div>
 
-    <div class="weather-item">
+                    <div id="humid" class="weather-value">--%</div>
 
-        <div class="weather-icon">🌬</div>
+                </div>
 
-        <div class="weather-name">풍속</div>
+                <div class="weather-item">
 
-        <div id="wind" class="weather-value">--m/s</div>
+                    <div class="weather-icon">🌬</div>
 
-    </div>
+                    <div class="weather-name">풍속</div>
 
-    <div class="weather-item">
+                    <div id="wind" class="weather-value">--m/s</div>
 
-        <div class="weather-icon">🧭</div>
+                </div>
 
-        <div class="weather-name">풍향</div>
+                <div class="weather-item">
 
-        <div id="dir" class="weather-value">--</div>
+                    <div class="weather-icon">🧭</div>
 
-    </div>
+                    <div class="weather-name">풍향</div>
 
-    <div class="weather-item">
+                    <div id="dir" class="weather-value">--</div>
 
-        <div class="weather-icon">☔</div>
+                </div>
 
-        <div class="weather-name">강수량</div>
+                <div class="weather-item">
 
-        <div id="rain" class="weather-value">--mm</div>
+                    <div class="weather-icon">☔</div>
 
-    </div>
+                    <div class="weather-name">강수량</div>
 
-</div>
+                    <div id="rain" class="weather-value">--mm</div>
+
+                </div>
+
+            </div>
+
+            <div class="weather-time">
+
+                🕒 관측시각 :
+                <span id="obsTime">
+                    --
+                </span>
+
+            </div>
+
+        </section>
 
         <!-- ================= AI 추천 ================= -->
 
         <section class="card">
 
             <div class="section-title">
-
-                🤖 AI 추천
-
+                🤖 AI 기상도우미
             </div>
 
-            <div id="recommend" class="recommend">
+            <div class="ai-box">
 
-                오늘의 기상정보를 분석하고 있습니다.
+                <div class="ai-avatar">
+
+                    🤖
+
+                </div>
+
+                <div class="ai-bubble">
+
+                    <p id="recommend">
+
+                        오늘의 제주 날씨를 분석하고 있습니다.
+
+                    </p>
+
+                </div>
 
             </div>
 
         </section>
 
-        <!-- ================= 오늘의 기상 탐험 ================= -->
+        <!-- ================= 오늘의 미션 ================= -->
 
         <section class="card">
 
@@ -130,7 +163,8 @@
 
             <p class="mission">
 
-                현재 기온과 체감온도의 차이는 얼마일까요?
+                현재 기온과 체감온도의 차이는
+                몇 도일까요?
 
             </p>
 
@@ -154,9 +188,18 @@
 
             <div class="course-list">
 
-                <button class="course selected" data-course="inside">
+                <button class="course selected"
+                    data-course="inside">
 
-                    <div class="course-icon">🏢</div>
+                    <span class="badge">
+                        실내
+                    </span>
+
+                    <div class="course-icon">
+
+                        🏢
+
+                    </div>
 
                     <div class="course-title">
 
@@ -178,9 +221,18 @@
 
                 </button>
 
-                <button class="course" data-course="outside">
+                <button class="course"
+                    data-course="outside">
 
-                    <div class="course-icon">🌳</div>
+                    <span class="badge green">
+                        야외
+                    </span>
+
+                    <div class="course-icon">
+
+                        🌳
+
+                    </div>
 
                     <div class="course-title">
 
@@ -202,9 +254,18 @@
 
                 </button>
 
-                <button class="course" data-course="history">
+                <button class="course"
+                    data-course="history">
 
-                    <div class="course-icon">🏛</div>
+                    <span class="badge orange">
+                        역사
+                    </span>
+
+                    <div class="course-icon">
+
+                        🏛
+
+                    </div>
 
                     <div class="course-title">
 
@@ -242,9 +303,13 @@
 
             <div class="level-list">
 
-                <button class="level selected" data-level="elementary">
+                <button class="level selected"
+                    data-level="elementary">
 
-                    <div class="level-icon">😀</div>
+                    <div class="level-icon">
+
+                        😀
+                    </div>
 
                     <div class="level-title">
 
@@ -254,15 +319,20 @@
 
                     <div class="level-desc">
 
-                        쉽고 재미있는 설명
+                        쉽고 재미있는 설명으로 체험합니다.
 
                     </div>
 
                 </button>
 
-                <button class="level" data-level="middle">
+                <button class="level"
+                    data-level="middle">
 
-                    <div class="level-icon">🧑</div>
+                    <div class="level-icon">
+
+                        🧑
+
+                    </div>
 
                     <div class="level-title">
 
@@ -272,15 +342,20 @@
 
                     <div class="level-desc">
 
-                        탐구 중심 설명
+                        원리를 이해하며 탐구합니다.
 
                     </div>
 
                 </button>
 
-                <button class="level" data-level="adult">
+                <button class="level"
+                    data-level="adult">
 
-                    <div class="level-icon">👨</div>
+                    <div class="level-icon">
+
+                        👨
+
+                    </div>
 
                     <div class="level-title">
 
@@ -290,7 +365,7 @@
 
                     <div class="level-desc">
 
-                        심화 해설 제공
+                        기상과 기후를 깊이 있게 살펴봅니다.
 
                     </div>
 
@@ -307,6 +382,13 @@
             🚀 체험 시작하기
 
         </button>
+
+        <p class="footer-text">
+
+            AI 스마트 가이드는 실시간 제주 날씨를 바탕으로
+            맞춤형 해설과 체험을 제공합니다.
+
+        </p>
 
     </main>
 
