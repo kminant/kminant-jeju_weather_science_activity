@@ -381,11 +381,11 @@ button{
 
 .choice{
 
-    display:flex;
+    display:grid;
 
-    flex-direction:column;
+    grid-template-columns:1fr;
 
-    gap:14px;
+    gap:16px;
 
 }
 
@@ -394,9 +394,19 @@ button{
 
     width:100%;
 
-    min-height:100px;
+    min-height:90px;
 
-    padding:20px;
+    padding:20px 22px;
+
+    background:#FFFFFF;
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    box-shadow:
+
+    0 6px 18px rgba(0,0,0,.06);
 
     display:flex;
 
@@ -404,87 +414,68 @@ button{
 
     gap:18px;
 
-    background:#fff;
-
-    border-radius:20px;
-
-    border:1px solid #D9E6F2;
-
-    box-shadow:
-    0 6px 18px rgba(0,0,0,.07);
-
     text-align:left;
 
-    font-size:18px;
+    font-size:20px;
 
     font-weight:700;
 
-    color:#222;
+    color:var(--text);
+
+    transition:.2s;
 
 }
 
 
-/* 아이콘 */
+/* 아이콘 영역 */
 
-.choice .icon{
+.choice button::before{
+
+    content:"";
 
     width:56px;
 
     height:56px;
 
-    display:flex;
+    border-radius:18px;
 
-    align-items:center;
+    background:var(--main-light);
 
-    justify-content:center;
-
-    background:#EAF5FF;
-
-    border-radius:16px;
-
-    font-size:30px;
+    flex-shrink:0;
 
 }
-
-
-
-/* 설명 */
-
-.choice span{
-
-    display:block;
-
-    margin-top:5px;
-
-    font-size:14px;
-
-    color:#666;
-
-    font-weight:400;
-
-}
-
 
 
 /* 선택 상태 */
 
 .choice button.active{
 
-    border:
+    background:
 
-    2px solid #0078D7;
+    linear-gradient(
+        135deg,
+        #EAF5FF,
+        #FFFFFF
+    );
 
-    background:#F3FAFF;
+    border:2px solid var(--main);
+
+    color:var(--main);
+
+    box-shadow:
+
+    0 8px 20px rgba(0,120,215,.18);
 
 }
 
 
-.choice button.active .icon{
+/* 눌림 효과 */
 
-    background:#0078D7;
+.choice button:active{
+
+    transform:scale(.98);
 
 }
-
 
 /* ===========================
    10. AI Answer Box
