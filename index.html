@@ -4,395 +4,592 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>제주기상과학홍보관 AI 스마트 가이드</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/style.css">
+    <title>
+        제주기상과학홍보관 AI 스마트 가이드
+    </title>
+
+    <link rel="stylesheet"
+        href="css/style.css">
 
 </head>
 
 <body>
 
-    <!-- ================= Header ================= -->
+<header class="header">
 
-    <header class="header">
+    <h1>
+        ☁️ 제주기상과학홍보관
+    </h1>
 
-        <h1>☁️ 제주기상과학홍보관</h1>
+    <p>
+        AI 스마트 가이드
+    </p>
 
-        <p>AI 스마트 가이드</p>
+    <span class="header-sub">
 
-        <span class="header-sub">
-            실시간 제주 날씨와 함께 기상여행을 시작해보세요.
+        실시간 제주 날씨를 기반으로
+        홍보관을 더욱 재미있게 체험해보세요.
+
+    </span>
+
+</header>
+
+<main>
+
+<!-- =======================================
+오늘의 제주 날씨
+======================================= -->
+
+<section class="card">
+
+    <div class="section-title">
+
+        📍 오늘의 제주 날씨
+
+    </div>
+
+    <div class="weather-main">
+
+        <div class="temperature">
+
+            <div class="temp-title">
+
+                🌡 현재기온
+
+            </div>
+
+            <div
+                id="temp"
+                class="temp-number">
+
+                --℃
+
+            </div>
+
+        </div>
+
+        <div class="temperature">
+
+            <div class="temp-title">
+
+                🥵 체감온도
+
+            </div>
+
+            <div
+                id="feel"
+                class="temp-number">
+
+                --℃
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="weather-grid">
+
+        <div class="weather-item">
+
+            <div class="weather-icon">
+
+                💧
+
+            </div>
+
+            <div class="weather-name">
+
+                습도
+
+            </div>
+
+            <div
+                id="humid"
+                class="weather-value">
+
+                --%
+
+            </div>
+
+        </div>
+
+        <div class="weather-item">
+
+            <div class="weather-icon">
+
+                🌬
+
+            </div>
+
+            <div class="weather-name">
+
+                풍속
+
+            </div>
+
+            <div
+                id="wind"
+                class="weather-value">
+
+                --m/s
+
+            </div>
+
+        </div>
+
+        <div class="weather-item">
+
+            <div class="weather-icon">
+
+                🧭
+
+            </div>
+
+            <div class="weather-name">
+
+                풍향
+
+            </div>
+
+            <div
+                id="dir"
+                class="weather-value">
+
+                --
+
+            </div>
+
+        </div>
+
+        <div class="weather-item">
+
+            <div class="weather-icon">
+
+                ☔
+
+            </div>
+
+            <div class="weather-name">
+
+                강수량
+
+            </div>
+
+            <div
+                id="rain"
+                class="weather-value">
+
+                --mm
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="weather-footer">
+
+        <div class="weather-time">
+
+            🕒 관측시각
+
+            <span id="obsTime">
+
+                --
+
+            </span>
+
+        </div>
+
+        <div class="today-tip">
+
+            <div class="tip-title">
+
+                💡 오늘의 관람 포인트
+
+            </div>
+
+            <div
+                id="todayTip"
+                class="tip-text">
+
+                AI가 오늘의 제주 날씨를 분석하고 있습니다.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =======================================
+AI 기상도우미
+======================================= -->
+
+<section class="card">
+
+    <div class="section-title">
+
+        🤖 AI 기상도우미
+
+    </div>
+
+    <div class="ai-box">
+
+        <div class="ai-avatar">
+
+            🤖
+
+        </div>
+
+        <div class="ai-bubble">
+
+            <div id="recommend">
+
+                오늘의 제주 날씨를 분석하고 있습니다.
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <button id="askAI" class="blue-btn">
+
+        💬 AI에게 질문하기
+
+    </button>
+
+    <div id="chatHistory">
+
+    </div>
+
+</section>
+
+<!-- =======================================
+오늘의 기상 탐험
+======================================= -->
+
+<section class="card">
+
+    <div class="section-title">
+
+        🎯 오늘의 기상 탐험
+
+    </div>
+
+    <p class="mission">
+
+        현재 기온과 체감온도의 차이는
+        몇 도일까요?
+
+    </p>
+
+    <button
+        id="hintBtn"
+        class="yellow-btn">
+
+        💡 AI에게 힌트 받기
+
+    </button>
+
+</section>
+
+<!-- =======================================
+관람코스
+======================================= -->
+
+<section class="card">
+
+    <div class="section-title">
+
+        🚶 어디까지 탐험할까요?
+
+    </div>
+
+    <div class="course-recommend">
+
+        ⭐ 오늘의 AI 추천
+
+        <span id="courseRecommend">
+
+            오늘은 실내 전시를 먼저 추천합니다.
+
         </span>
 
-    </header>
+    </div>
 
-    <main>
+    <div class="course-list">
 
-        <!-- ================= 오늘의 제주 날씨 ================= -->
+        <!-- 홍보관 -->
 
-        <section class="card">
+        <button
+            class="course selected"
+            data-course="inside">
 
-            <div class="section-title">
-                📍 오늘의 제주 날씨
-            </div>
+            <span class="badge">
 
-            <div class="weather-main">
+                실내
 
-                <div class="temperature">
+            </span>
 
-                    <div class="temp-title">
-                        🌡 현재 기온
-                    </div>
+            <div class="course-icon">
 
-                    <div id="temp" class="temp-number">
-                        --℃
-                    </div>
-
-                </div>
-
-                <div class="temperature">
-
-                    <div class="temp-title">
-                        🥵 체감온도
-                    </div>
-
-                    <div id="feel" class="temp-number">
-                        --℃
-                    </div>
-
-                </div>
+                🏢
 
             </div>
 
-            <div class="weather-grid">
+            <div class="course-title">
 
-                <div class="weather-item">
-
-                    <div class="weather-icon">💧</div>
-
-                    <div class="weather-name">습도</div>
-
-                    <div id="humid" class="weather-value">--%</div>
-
-                </div>
-
-                <div class="weather-item">
-
-                    <div class="weather-icon">🌬</div>
-
-                    <div class="weather-name">풍속</div>
-
-                    <div id="wind" class="weather-value">--m/s</div>
-
-                </div>
-
-                <div class="weather-item">
-
-                    <div class="weather-icon">🧭</div>
-
-                    <div class="weather-name">풍향</div>
-
-                    <div id="dir" class="weather-value">--</div>
-
-                </div>
-
-                <div class="weather-item">
-
-                    <div class="weather-icon">☔</div>
-
-                    <div class="weather-name">강수량</div>
-
-                    <div id="rain" class="weather-value">--mm</div>
-
-                </div>
+                제주기상과학홍보관
 
             </div>
 
-            <div class="weather-time">
+            <div class="course-desc">
 
-                🕒 관측시각 :
-                <span id="obsTime">
-                    --
-                </span>
+                기상관측부터 예보까지,
+                다양한 전시물을 체험합니다.
 
             </div>
 
-        </section>
+            <div class="course-time">
 
-        <!-- ================= AI 추천 ================= -->
-
-        <section class="card">
-
-            <div class="section-title">
-                🤖 AI 기상도우미
-            </div>
-
-            <div class="ai-box">
-
-                <div class="ai-avatar">
-
-                    🤖
-
-                </div>
-
-                <div class="ai-bubble">
-
-                    <p id="recommend">
-
-                        오늘의 제주 날씨를 분석하고 있습니다.
-
-                    </p>
-
-                </div>
+                ⏱ 약 20분
 
             </div>
-
-        </section>
-
-        <!-- ================= 오늘의 미션 ================= -->
-
-        <section class="card">
-
-            <div class="section-title">
-
-                🎯 오늘의 기상 탐험
-
-            </div>
-
-            <p class="mission">
-
-                현재 기온과 체감온도의 차이는
-                몇 도일까요?
-
-            </p>
-
-            <button id="hintBtn" class="yellow-btn">
-
-                💡 AI에게 힌트 받기
-
-            </button>
-
-        </section>
-
-        <!-- ================= 관람코스 ================= -->
-
-        <section class="card">
-
-            <div class="section-title">
-
-                🚶 어디까지 탐험할까요?
-
-            </div>
-
-            <div class="course-list">
-
-                <button class="course selected"
-                    data-course="inside">
-
-                    <span class="badge">
-                        실내
-                    </span>
-
-                    <div class="course-icon">
-
-                        🏢
-
-                    </div>
-
-                    <div class="course-title">
-
-                        제주기상과학홍보관
-
-                    </div>
-
-                    <div class="course-desc">
-
-                        실내 기상·기후 전시를 관람합니다.
-
-                    </div>
-
-                    <div class="course-time">
-
-                        ⏱ 약 20분
-
-                    </div>
-
-                </button>
-
-                <button class="course"
-                    data-course="outside">
-
-                    <span class="badge green">
-                        야외
-                    </span>
-
-                    <div class="course-icon">
-
-                        🌳
-
-                    </div>
-
-                    <div class="course-title">
-
-                        지상기상관측장비
-
-                    </div>
-
-                    <div class="course-desc">
-
-                        실제 관측장비를 가까이에서 살펴봅니다.
-
-                    </div>
-
-                    <div class="course-time">
-
-                        ⏱ 약 15분
-
-                    </div>
-
-                </button>
-
-                <button class="course"
-                    data-course="history">
-
-                    <span class="badge orange">
-                        역사
-                    </span>
-
-                    <div class="course-icon">
-
-                        🏛
-
-                    </div>
-
-                    <div class="course-title">
-
-                        역사문화공간
-
-                    </div>
-
-                    <div class="course-desc">
-
-                        공신정터와 제주의 기상 역사를 알아봅니다.
-
-                    </div>
-
-                    <div class="course-time">
-
-                        ⏱ 약 15분
-
-                    </div>
-
-                </button>
-
-            </div>
-
-        </section>
-
-        <!-- ================= 참여자 ================= -->
-
-        <section class="card">
-
-            <div class="section-title">
-
-                👤 참여자 선택
-
-            </div>
-
-            <div class="level-list">
-
-                <button class="level selected"
-                    data-level="elementary">
-
-                    <div class="level-icon">
-
-                        😀
-                    </div>
-
-                    <div class="level-title">
-
-                        초등학생
-
-                    </div>
-
-                    <div class="level-desc">
-
-                        쉽고 재미있는 설명으로 체험합니다.
-
-                    </div>
-
-                </button>
-
-                <button class="level"
-                    data-level="middle">
-
-                    <div class="level-icon">
-
-                        🧑
-
-                    </div>
-
-                    <div class="level-title">
-
-                        중·고등학생
-
-                    </div>
-
-                    <div class="level-desc">
-
-                        원리를 이해하며 탐구합니다.
-
-                    </div>
-
-                </button>
-
-                <button class="level"
-                    data-level="adult">
-
-                    <div class="level-icon">
-
-                        👨
-
-                    </div>
-
-                    <div class="level-title">
-
-                        성인
-
-                    </div>
-
-                    <div class="level-desc">
-
-                        기상과 기후를 깊이 있게 살펴봅니다.
-
-                    </div>
-
-                </button>
-
-            </div>
-
-        </section>
-
-        <!-- ================= 시작 ================= -->
-
-        <button id="startBtn">
-
-            🚀 체험 시작하기
 
         </button>
 
-        <p class="footer-text">
+        <!-- 야외 -->
 
-            AI 스마트 가이드는 실시간 제주 날씨를 바탕으로
-            맞춤형 해설과 체험을 제공합니다.
+        <button
+            class="course"
+            data-course="outside">
 
-        </p>
+            <span class="badge green">
 
-    </main>
+                야외
 
-    <script src="js/main.js"></script>
+            </span>
+
+            <div class="course-icon">
+
+                🌳
+
+            </div>
+
+            <div class="course-title">
+
+                지상기상관측장비
+
+            </div>
+
+            <div class="course-desc">
+
+                실제 기상관측장비를
+                가까이에서 살펴봅니다.
+
+            </div>
+
+            <div class="course-time">
+
+                ⏱ 약 15분
+
+            </div>
+
+        </button>
+
+        <!-- 역사 -->
+
+        <button
+            class="course"
+            data-course="history">
+
+            <span class="badge orange">
+
+                역사
+
+            </span>
+
+            <div class="course-icon">
+
+                🏛
+
+            </div>
+
+            <div class="course-title">
+
+                역사문화공간
+
+            </div>
+
+            <div class="course-desc">
+
+                공신정터와
+                제주 기상 역사를 알아봅니다.
+
+            </div>
+
+            <div class="course-time">
+
+                ⏱ 약 15분
+
+            </div>
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =======================================
+참여자 선택
+======================================= -->
+
+<section class="card">
+
+    <div class="section-title">
+
+        👤 참여자 선택
+
+    </div>
+
+    <div class="level-list">
+
+        <button
+            class="level selected"
+            data-level="elementary">
+
+            <div class="level-icon">
+
+                😀
+            </div>
+
+            <div class="level-title">
+
+                초등학생
+
+            </div>
+
+            <div class="level-desc">
+
+                쉽고 재미있는 설명과
+                퀴즈를 함께 체험합니다.
+
+            </div>
+
+        </button>
+
+        <button
+            class="level"
+            data-level="middle">
+
+            <div class="level-icon">
+
+                🧑
+            </div>
+
+            <div class="level-title">
+
+                중·고등학생
+
+            </div>
+
+            <div class="level-desc">
+
+                기상 원리를 이해하며
+                탐구 중심으로 체험합니다.
+
+            </div>
+
+        </button>
+
+        <button
+            class="level"
+            data-level="adult">
+
+            <div class="level-icon">
+
+                👨
+            </div>
+
+            <div class="level-title">
+
+                성인
+
+            </div>
+
+            <div class="level-desc">
+
+                기상과 기후를
+                깊이 있게 살펴봅니다.
+
+            </div>
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =======================================
+체험 시작
+======================================= -->
+
+<section class="start-section">
+
+    <button id="startBtn">
+
+        🚀 체험 시작하기
+
+    </button>
+
+    <p class="start-guide">
+
+        선택한 관람코스와 참여자 수준에 맞는
+        AI 스마트 가이드가 시작됩니다.
+
+    </p>
+
+</section>
+
+<!-- =======================================
+Footer
+======================================= -->
+
+<footer>
+
+    <div class="footer-card">
+
+        <div class="footer-title">
+
+            ℹ️ AI 스마트 가이드
+
+        </div>
+
+        <div class="footer-text">
+
+            • 실시간 제주 AMOS(184) 관측자료를 활용합니다.<br>
+
+            • AI가 오늘의 날씨에 맞는 전시를 추천합니다.<br>
+
+            • 궁금한 점은 언제든 AI에게 질문해보세요.
+
+        </div>
+
+    </div>
+
+</footer>
+
+</main>
+
+<script src="js/main.js"></script>
 
 </body>
 
