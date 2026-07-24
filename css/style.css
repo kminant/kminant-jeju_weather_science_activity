@@ -839,33 +839,36 @@ main{
 
     display: block;
 
-    margin-left: auto;  /* 오른쪽 정렬 */
-
+    margin-left: auto;   /* 오른쪽 정렬 */
     margin-top: 12px;
 
-    padding: 12px 28px;
+    padding: 12px 24px;
 
-    background: #1976d2;
+    background: linear-gradient(135deg, #4facfe, #1976d2);
 
     color: white;
 
     border: none;
 
-    border-radius: 25px;
+    border-radius: 24px;
 
     font-size: 16px;
 
-    font-weight: 600;
+    font-weight: 700;
 
     cursor: pointer;
 
-    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 10px rgba(25,118,210,0.3);
+
+    transition: all 0.2s ease;
 
 }
 
 
 #askBtn:hover {
 
-    background: #125ca8;
+    transform: translateY(-2px);
+
+    box-shadow: 0 6px 14px rgba(25,118,210,0.4);
 
 }
