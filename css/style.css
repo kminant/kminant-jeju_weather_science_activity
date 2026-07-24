@@ -381,45 +381,91 @@ button{
 
 .choice{
 
-    display:flex;
+    display:grid;
 
-    gap:10px;
+    grid-template-columns:repeat(2,1fr);
 
-    flex-wrap:wrap;
+    gap:14px;
 
 }
+
 
 
 .choice button{
 
-    flex:1;
+    position:relative;
 
-    min-width:120px;
+    min-height:110px;
 
-    padding:14px;
+    padding:20px 12px;
 
     background:white;
 
-    border:
+    border-radius:18px;
 
-    1px solid var(--border);
+    border:1px solid var(--border);
 
-    border-radius:12px;
+    box-shadow:
 
-    font-size:15px;
+    0 5px 15px rgba(0,0,0,.06);
+
+    font-size:17px;
+
+    font-weight:700;
+
+    color:#333;
+
+    transition:.2s;
 
 }
 
 
+
+/* 아이콘 공간 */
+
+.choice button::before{
+
+    display:block;
+
+    font-size:34px;
+
+    margin-bottom:8px;
+
+}
+
+
+
+/* 선택 */
+
 .choice button.active{
 
-    background:var(--sky);
+    background:
 
-    border:2px solid var(--blue);
+    linear-gradient(
+        135deg,
+        #EAF6FF,
+        #FFFFFF
+    );
+
+    border:
+
+    2px solid var(--blue);
 
     color:var(--blue);
 
-    font-weight:700;
+    box-shadow:
+
+    0 8px 18px rgba(30,136,229,.18);
+
+}
+
+
+
+/* 눌림 효과 */
+
+.choice button:active{
+
+    transform:scale(.97);
 
 }
 
