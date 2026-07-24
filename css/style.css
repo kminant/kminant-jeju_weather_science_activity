@@ -340,116 +340,155 @@ main{
 
     flex-direction:column;
 
-    gap:18px;
+    gap:16px;
 
 }
 
 .course{
 
+    position:relative;
+
     width:100%;
 
-    min-height:165px;
+    min-height:120px;
 
-    border:none;
-
-    border-radius:22px;
-
-    background:white;
+    background:#fff;
 
     border:2px solid #dceaf7;
 
-    cursor:pointer;
+    border-radius:18px;
 
-    transition:.25s;
+    padding:20px 24px;
 
     display:flex;
 
     flex-direction:column;
 
+    align-items:flex-start;
+
     justify-content:center;
 
-    align-items:center;
+    gap:6px;
 
-    gap:10px;
+    cursor:pointer;
 
-    padding:25px;
+    text-align:left;
 
-    box-shadow:0 6px 15px rgba(0,0,0,.05);
+    transition:all .25s ease;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.05);
 
 }
 
 .course:hover{
 
-    transform:translateY(-4px);
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 18px rgba(0,0,0,.08);
 
 }
 
-.course:active,
-.level:active,
-#startBtn:active,
-.yellow-btn:active{
+.course:active{
 
-    transform:scale(0.97);
+    transform:scale(.98);
 
 }
+
+/* 선택 */
 
 .course.selected{
 
-    background:#0078d7;
+    background:#fff;
 
-    color:white;
+    border-color:var(--main);
 
-    border-color:#0078d7;
-
-    box-shadow:0 15px 30px rgba(0,120,215,.35);
+    box-shadow:0 8px 18px rgba(0,120,215,.15);
 
 }
 
-.course.selected .course-desc{
+/* 왼쪽 파란 막대 */
 
-    color:white;
+.course.selected::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:10px;
+
+    bottom:10px;
+
+    width:6px;
+
+    background:var(--main);
+
+    border-radius:0 6px 6px 0;
 
 }
 
-.course.selected .course-time{
+/* 오른쪽 선택 표시 */
 
-    color:white;
+.course.selected::after{
+
+    content:"✓ 선택";
+
+    position:absolute;
+
+    top:16px;
+
+    right:16px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    color:var(--main);
 
 }
+
+/* 아이콘 */
 
 .course-icon{
 
-    font-size:45px;
+    font-size:30px;
 
 }
+
+/* 제목 */
 
 .course-title{
 
-    font-size:23px;
+    font-size:20px;
 
-    font-weight:bold;
+    font-weight:700;
 
 }
+
+/* 설명 */
 
 .course-desc{
 
-    font-size:16px;
-
-    text-align:center;
+    font-size:15px;
 
     color:#666;
 
-    line-height:1.6;
+    line-height:1.5;
 
 }
 
+/* 시간 */
+
 .course-time{
 
-    margin-top:8px;
+    margin-top:6px;
 
-    color:#0078d7;
+    font-size:14px;
 
-    font-weight:bold;
+    font-weight:600;
+
+    color:var(--main);
 
 }
 
@@ -458,91 +497,147 @@ main{
 /* 참여자 */
 /* ============================= */
 
-.level-list{
+.level-group{
 
     display:flex;
 
     flex-direction:column;
 
-    gap:18px;
+    gap:16px;
 
 }
 
 .level{
 
+    position:relative;
+
     width:100%;
 
-    min-height:145px;
+    min-height:105px;
 
-    border:none;
-
-    border-radius:22px;
-
-    background:white;
+    background:#fff;
 
     border:2px solid #dceaf7;
 
-    cursor:pointer;
+    border-radius:18px;
 
-    transition:.25s;
+    padding:18px 22px;
 
     display:flex;
 
     flex-direction:column;
 
+    align-items:flex-start;
+
     justify-content:center;
 
-    align-items:center;
+    gap:6px;
 
-    gap:10px;
+    cursor:pointer;
 
-    padding:22px;
+    text-align:left;
 
-    box-shadow:0 6px 15px rgba(0,0,0,.05);
+    transition:all .25s ease;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.05);
 
 }
 
 .level:hover{
 
-    transform:translateY(-4px);
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 18px rgba(0,0,0,.08);
 
 }
+
+.level:active{
+
+    transform:scale(.98);
+
+}
+
+/* 선택 */
 
 .level.selected{
 
-    background:#28a745;
+    background:#fff;
 
-    color:white;
+    border-color:#2E8B57;
 
-    border-color:#28a745;
-
-    box-shadow:0 15px 30px rgba(40,167,69,.35);
+    box-shadow:0 8px 18px rgba(46,139,87,.15);
 
 }
 
-.level.selected .level-desc{
+/* 왼쪽 초록 막대 */
 
-    color:white;
+.level.selected::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:10px;
+
+    bottom:10px;
+
+    width:6px;
+
+    background:#2E8B57;
+
+    border-radius:0 6px 6px 0;
 
 }
+
+/* 오른쪽 선택 표시 */
+
+.level.selected::after{
+
+    content:"✓ 선택";
+
+    position:absolute;
+
+    top:16px;
+
+    right:16px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    color:#2E8B57;
+
+}
+
+/* 아이콘 */
 
 .level-icon{
 
-    font-size:42px;
+    font-size:28px;
 
 }
+
+/* 제목 */
 
 .level-title{
 
-    font-size:22px;
+    font-size:20px;
 
-    font-weight:bold;
+    font-weight:700;
 
 }
 
+/* 설명 */
+
 .level-desc{
 
+    font-size:15px;
+
     color:#666;
+
+    line-height:1.5;
 
 }
 
