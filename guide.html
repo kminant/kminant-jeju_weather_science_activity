@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>AI 스마트 도슨트</title>
+
+<link rel="stylesheet"
+href="css/style.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+<div id="zone" class="guide-zone">
+
+실내 전시
+
+</div>
+
+<h1 id="title">
+
+전시물 제목
+
+</h1>
+
+<p id="subtitle">
+
+부제목
+
+</p>
+
+</header>
+
+<main>
+
+<section class="card">
+
+<div class="section-title">
+
+📖 전시 설명
+
+</div>
+
+<p id="summary">
+
+요약 설명
+
+</p>
+
+<hr>
+
+<p id="description">
+
+설명이 표시됩니다.
+
+</p>
+
+</section>
+
+<section class="card">
+
+<div class="section-title">
+
+💡 알고 있나요?
+
+</div>
+
+<p id="story">
+
+흥미로운 이야기
+
+</p>
+
+</section>
+
+<section class="card">
+
+<div class="section-title">
+
+☀ 오늘의 제주 날씨와 연결
+
+</div>
+
+<p id="weatherTip">
+
+오늘 날씨와 연결된 설명
+
+</p>
+
+</section>
+
+<section class="card">
+
+<div class="section-title">
+
+🤖 AI에게 질문하기
+
+</div>
+
+<input
+
+id="question"
+
+type="text"
+
+placeholder="궁금한 점을 입력하세요.">
+
+<button id="askBtn">
+
+질문하기
+
+</button>
+
+<div id="answer">
+
+</div>
+
+</section>
+
+<section class="card">
+
+<div class="section-title">
+
+❓ 퀴즈
+
+</div>
+
+<div id="quiz">
+
+</div>
+
+</section>
+
+<div class="guide-navigation">
+
+<button id="prevBtn">
+
+⬅ 이전 전시
+
+</button>
+
+<button id="nextBtn">
+
+다음 전시 ➡
+
+</button>
+
+</div>
+
+</main>
+
+<script src="js/storage.js"></script>
+
+<script src="js/weather.js"></script>
+
+<script src="js/guide/guide_manager.js"></script>
+
+<!-- 전시물 파일들 -->
+<script src="js/guide/guide_timeline.js"></script>
+<script src="js/guide/guide_amosmap.js"></script>
+<script src="js/guide/guide_volcano.js"></script>
+<script src="js/guide/guide_tornado.js"></script>
+<script src="js/guide/guide_earthquake.js"></script>
+<script src="js/guide/guide_forecast.js"></script>
+<script src="js/guide/guide_climatechange.js"></script>
+<script src="js/guide/guide_history100.js"></script>
+<script src="js/guide/guide_oldequipment.js"></script>
+<script src="js/guide/guide_surfaceobs.js"></script>
+<script src="js/guide/guide_gongsinjeong.js"></script>
+<script src="js/guide/guide_cheugugi.js"></script>
+
+<script src="js/ai.js"></script>
+<script src="js/guide.js"></script>
+
+</body>
+
+</html>
