@@ -101,3 +101,5 @@ const guideEarth = {
     ]
 
 };
+
+guideManager.register(guideEarth);
