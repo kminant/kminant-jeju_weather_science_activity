@@ -381,94 +381,109 @@ button{
 
 .choice{
 
-    display:grid;
+    display:flex;
 
-    grid-template-columns:repeat(2,1fr);
+    flex-direction:column;
 
     gap:14px;
 
 }
 
 
-
 .choice button{
 
-    position:relative;
+    width:100%;
 
-    min-height:110px;
+    min-height:100px;
 
-    padding:20px 12px;
+    padding:20px;
 
-    background:white;
+    display:flex;
 
-    border-radius:18px;
+    align-items:center;
 
-    border:1px solid var(--border);
+    gap:18px;
+
+    background:#fff;
+
+    border-radius:20px;
+
+    border:1px solid #D9E6F2;
 
     box-shadow:
+    0 6px 18px rgba(0,0,0,.07);
 
-    0 5px 15px rgba(0,0,0,.06);
+    text-align:left;
 
-    font-size:17px;
+    font-size:18px;
 
     font-weight:700;
 
-    color:#333;
+    color:#222;
 
-    transition:.2s;
+}
+
+
+/* 아이콘 */
+
+.choice .icon{
+
+    width:56px;
+
+    height:56px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#EAF5FF;
+
+    border-radius:16px;
+
+    font-size:30px;
 
 }
 
 
 
-/* 아이콘 공간 */
+/* 설명 */
 
-.choice button::before{
+.choice span{
 
     display:block;
 
-    font-size:34px;
+    margin-top:5px;
 
-    margin-bottom:8px;
+    font-size:14px;
+
+    color:#666;
+
+    font-weight:400;
 
 }
 
 
 
-/* 선택 */
+/* 선택 상태 */
 
 .choice button.active{
 
-    background:
-
-    linear-gradient(
-        135deg,
-        #EAF6FF,
-        #FFFFFF
-    );
-
     border:
 
-    2px solid var(--blue);
+    2px solid #0078D7;
 
-    color:var(--blue);
-
-    box-shadow:
-
-    0 8px 18px rgba(30,136,229,.18);
+    background:#F3FAFF;
 
 }
 
 
+.choice button.active .icon{
 
-/* 눌림 효과 */
-
-.choice button:active{
-
-    transform:scale(.97);
+    background:#0078D7;
 
 }
-
 
 
 /* ===========================
