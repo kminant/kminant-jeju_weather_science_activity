@@ -1,7 +1,8 @@
 /* ===================================================
    제주기상과학홍보관 AI 스마트 가이드
-   Style.css V2
+   Style.css V3
 =================================================== */
+
 
 /* ===========================
    1. Reset
@@ -13,37 +14,40 @@
     box-sizing:border-box;
 }
 
+
 /* ===========================
-   2. Color System
+   2. Color
 =========================== */
 
 :root{
 
-    --main:#0078D7;
+    --blue:#1E88E5;
 
-    --main-light:#EAF5FF;
+    --sky:#EAF6FF;
 
-    --green:#2E8B57;
+    --green:#43A047;
 
-    --orange:#F59E0B;
+    --orange:#FF9800;
 
     --yellow:#FFD54F;
 
-    --bg:#F5F8FC;
+    --bg:#F4F8FC;
 
-    --card:#FFFFFF;
+    --white:#FFFFFF;
 
     --text:#222;
 
     --sub:#666;
 
-    --border:#D9E6F2;
+    --border:#DCE8F2;
 
-    --radius:20px;
+    --radius:16px;
 
-    --shadow:0 8px 24px rgba(0,0,0,.06);
+    --shadow:
+    0 4px 14px rgba(0,0,0,.07);
 
 }
+
 
 /* ===========================
    3. Body
@@ -64,65 +68,73 @@ body{
 
 }
 
+
 /* ===========================
    4. Main
 =========================== */
 
 main{
 
+    width:100%;
+
     max-width:520px;
 
     margin:auto;
 
-    padding:20px;
+    padding-bottom:40px;
 
 }
+
+
 
 /* ===========================
    5. Header
 =========================== */
+
 
 .header{
 
     background:
 
     linear-gradient(
-        135deg,
-        #0078D7,
-        #39A0FF
+        160deg,
+        #1976D2,
+        #64B5F6
     );
 
     color:white;
 
     text-align:center;
 
-    padding:45px 20px;
+    padding:34px 20px 30px;
 
-    border-radius:0 0 28px 28px;
-
-    box-shadow:
-
-    0 12px 28px rgba(0,120,215,.22);
+    border-radius:
+    0 0 24px 24px;
 
 }
+
 
 .header h1{
 
-    font-size:32px;
+    font-size:27px;
 
-    font-weight:700;
+    font-weight:800;
 
-    margin-bottom:10px;
+    letter-spacing:-1px;
 
 }
 
+
 .header p{
 
-    font-size:20px;
+    margin-top:8px;
+
+    font-size:17px;
 
     font-weight:600;
 
 }
+
 
 .header-sub{
 
@@ -130,31 +142,33 @@ main{
 
     margin-top:12px;
 
-    font-size:15px;
+    font-size:14px;
 
-    opacity:.95;
-
-    line-height:1.6;
+    opacity:.9;
 
 }
 
+
+
 /* ===========================
-   6. 공통 Card
+   6. Card
 =========================== */
+
 
 .card{
 
-    background:var(--card);
+    background:var(--white);
+
+    margin:18px 16px 0;
+
+    padding:20px;
 
     border-radius:var(--radius);
-
-    margin-top:22px;
-
-    padding:24px;
 
     box-shadow:var(--shadow);
 
 }
+
 
 .section-title{
 
@@ -162,141 +176,355 @@ main{
 
     align-items:center;
 
-    gap:10px;
+    gap:8px;
 
-    font-size:23px;
+    font-size:21px;
 
     font-weight:700;
 
-    margin-bottom:20px;
+    margin-bottom:16px;
 
 }
+
 
 
 /* ===========================
-   7. 오늘의 제주 날씨
+   7. Weather
 =========================== */
+
 
 .weather-main{
 
-    display:grid;
+    display:flex;
 
-    grid-template-columns:1fr 1fr;
+    flex-direction:column;
 
-    gap:16px;
-
-    margin-bottom:20px;
+    gap:12px;
 
 }
 
-/* 큰 기온 카드 */
+
+/* 현재 기온 */
 
 .temperature{
 
-    background:linear-gradient(
-        180deg,
-        #ffffff,
-        #f8fbff
+    background:
+
+    linear-gradient(
+        135deg,
+        #F8FCFF,
+        #EAF6FF
     );
 
-    border:2px solid var(--border);
+    border:1px solid var(--border);
 
-    border-radius:18px;
+    border-radius:14px;
 
     padding:20px;
 
     text-align:center;
 
-    box-shadow:0 4px 10px rgba(0,0,0,.04);
-
 }
+
 
 .temp-title{
 
-    font-size:17px;
-
-    font-weight:600;
+    font-size:15px;
 
     color:var(--sub);
 
-    margin-bottom:10px;
-
 }
+
 
 .temp-number{
 
-    font-size:44px;
+    margin-top:5px;
 
-    font-weight:700;
+    font-size:42px;
 
-    color:var(--main);
+    font-weight:800;
 
-    line-height:1;
+    color:var(--blue);
 
 }
 
-/* 아래 작은 정보 */
+
+
+/* 날씨 정보 */
 
 .weather-grid{
 
     display:grid;
 
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
 
-    gap:14px;
+    repeat(2,1fr);
+
+    gap:10px;
 
 }
 
+
+
 .weather-item{
 
-    background:#f8fbff;
+    background:#FAFCFE;
 
     border:1px solid var(--border);
 
-    border-radius:16px;
+    border-radius:12px;
 
-    padding:16px;
+    padding:14px 8px;
 
     text-align:center;
 
 }
 
+
+
 .weather-icon{
 
-    font-size:26px;
-
-    margin-bottom:6px;
+    font-size:24px;
 
 }
 
+
+
 .weather-name{
 
-    font-size:14px;
+    margin-top:4px;
+
+    font-size:13px;
 
     color:var(--sub);
 
 }
 
+
+
 .weather-value{
 
-    margin-top:6px;
+    margin-top:4px;
 
-    font-size:22px;
+    font-size:20px;
 
     font-weight:700;
 
-    color:var(--text);
-
 }
+
+
+
+/* 시간 */
 
 .weather-time{
 
-    margin-top:18px;
+    margin-top:14px;
 
     text-align:right;
 
-    font-size:13px;
-
     color:#888;
+
+    font-size:12px;
+
+}
+
+
+
+/* ===========================
+   8. Buttons
+=========================== */
+
+
+button{
+
+    border:none;
+
+    font-family:inherit;
+
+    cursor:pointer;
+
+}
+
+
+
+.guide-btn{
+
+    width:100%;
+
+    padding:16px;
+
+    border-radius:14px;
+
+    background:var(--blue);
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:700;
+
+}
+
+
+.guide-btn:active{
+
+    transform:scale(.98);
+
+}
+
+
+
+/* ===========================
+   9. Choice Button
+=========================== */
+
+
+.choice{
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+}
+
+
+.choice button{
+
+    flex:1;
+
+    min-width:120px;
+
+    padding:14px;
+
+    background:white;
+
+    border:
+
+    1px solid var(--border);
+
+    border-radius:12px;
+
+    font-size:15px;
+
+}
+
+
+.choice button.active{
+
+    background:var(--sky);
+
+    border:2px solid var(--blue);
+
+    color:var(--blue);
+
+    font-weight:700;
+
+}
+
+
+
+/* ===========================
+   10. AI Answer Box
+=========================== */
+
+
+.ai-box{
+
+    background:#F5FBFF;
+
+    border-left:
+
+    5px solid var(--blue);
+
+    padding:16px;
+
+    border-radius:12px;
+
+    font-size:16px;
+
+}
+
+
+
+/* ===========================
+   11. Exhibit Card
+=========================== */
+
+
+.exhibit-card{
+
+    background:white;
+
+    border-radius:14px;
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+
+}
+
+
+
+.exhibit-card img{
+
+    width:100%;
+
+    display:block;
+
+}
+
+
+
+.exhibit-content{
+
+    padding:16px;
+
+}
+
+
+
+.exhibit-title{
+
+    font-size:20px;
+
+    font-weight:700;
+
+}
+
+
+
+.exhibit-desc{
+
+    margin-top:8px;
+
+    color:var(--sub);
+
+    font-size:15px;
+
+}
+
+
+
+/* ===========================
+   12. Mobile
+=========================== */
+
+
+@media(max-width:380px){
+
+    .header h1{
+
+        font-size:24px;
+
+    }
+
+
+    .temp-number{
+
+        font-size:36px;
+
+    }
 
 }
