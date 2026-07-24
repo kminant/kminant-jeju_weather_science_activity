@@ -1,8 +1,13 @@
 /* ==========================================
    ai.js
+   AI 스마트 도슨트
 ========================================== */
 
-function askGuide(question){
+/* ==========================================
+   질문 처리
+========================================== */
+
+async function askGuide(question){
 
     const id = getGuideId();
 
@@ -14,8 +19,14 @@ function askGuide(question){
 
     }
 
-    // FAQ 먼저 검색
+    // 빈 질문 체크
+    if(question.trim() === ""){
 
+        return "질문을 입력해 주세요.";
+
+    }
+
+    // FAQ 먼저 검색
     const faq = searchFAQ(guide, question);
 
     if(faq){
@@ -24,13 +35,24 @@ function askGuide(question){
 
     }
 
-    // FAQ에 없으면
+    // FAQ에 없으면 AI 호출
+    const answer = await askAI(question);
 
-    return "이 질문은 AI에게 전달됩니다.";
+    return answer;
 
 }
 
+/* ==========================================
+   FAQ 검색
+========================================== */
+
 function searchFAQ(guide, question){
+
+    if(!guide.faq){
+
+        return null;
+
+    }
 
     const text = question.replace(/\s/g,"");
 
@@ -50,18 +72,64 @@ function searchFAQ(guide, question){
 
 }
 
-document
-.getElementById("askBtn")
-.onclick=()=>{
+/* ==========================================
+   OpenAI 호출 (임시)
+========================================== */
 
-    const q = document
-        .getElementById("question")
-        .value;
+async function askAI(question){
 
-    const answer = askGuide(q);
+    /*
+        나중에 Cloudflare Worker 주소로 변경
 
-    document
-        .getElementById("answer")
-        .innerHTML = answer;
+        const response = await fetch(
+            "https://xxxxx.workers.dev",
+            {
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({
+                    guide:getGuideId(),
+                    level:loadLevel(),
+                    weather:loadWeather(),
+                    question:question
+                })
+            }
+        );
+
+        const result = await response.json();
+
+        return result.answer;
+    */
+
+    return "🤖 아직 OpenAI가 연결되지 않았습니다.";
 
 }
+
+/* ==========================================
+   질문 버튼
+========================================== */
+
+document
+.getElementById("askBtn")
+.onclick = async ()=>{
+
+    const q =
+    document
+    .getElementById("question")
+    .value;
+
+    document
+    .getElementById("answer")
+    .innerHTML =
+    "🤖 AI가 생각하고 있습니다...";
+
+    const answer =
+    await askGuide(q);
+
+    document
+    .getElementById("answer")
+    .innerHTML =
+    answer;
+
+};
