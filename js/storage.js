@@ -1,23 +1,43 @@
-/* ===========================================
+/* ==========================================
    storage.js
-   선택한 정보를 저장하고 불러오는 파일
-=========================================== */
+   localStorage 관리
+========================================== */
 
-// 관람코스 저장
+/* ==========================================
+   참여자 수준
+========================================== */
+
+function saveLevel(level){
+
+    localStorage.setItem("level", level);
+
+}
+
+function loadLevel(){
+
+    return localStorage.getItem("level") || "elementary";
+
+}
+
+/* ==========================================
+   관람코스
+========================================== */
+
 function saveCourses(courses){
 
     localStorage.setItem(
+
         "courses",
+
         JSON.stringify(courses)
+
     );
 
 }
 
-// 관람코스 불러오기
 function loadCourses(){
 
-    const data =
-    localStorage.getItem("courses");
+    const data = localStorage.getItem("courses");
 
     if(!data){
 
@@ -29,53 +49,112 @@ function loadCourses(){
 
 }
 
-// 참여자 저장
-function saveLevel(level){
+/* ==========================================
+   현재 전시
+========================================== */
+
+function saveCurrentGuide(id){
 
     localStorage.setItem(
 
-        "level",
+        "currentGuide",
 
-        level
+        id
 
     );
 
 }
 
-// 참여자 불러오기
-function loadLevel(){
+function loadCurrentGuide(){
 
-    return localStorage.getItem("level")
-    || "elementary";
+    return localStorage.getItem("currentGuide");
 
 }
 
-// 현재 날씨 저장
-function saveWeather(weather){
+/* ==========================================
+   방문한 전시
+========================================== */
+
+function saveVisited(id){
+
+    const visited = loadVisited();
+
+    if(!visited.includes(id)){
+
+        visited.push(id);
+
+    }
 
     localStorage.setItem(
 
-        "weather",
+        "visited",
 
-        JSON.stringify(weather)
+        JSON.stringify(visited)
 
     );
 
 }
 
-// 현재 날씨 불러오기
-function loadWeather(){
+function loadVisited(){
 
-    const data=
-
-    localStorage.getItem("weather");
+    const data = localStorage.getItem("visited");
 
     if(!data){
 
-        return null;
+        return [];
 
     }
 
     return JSON.parse(data);
+
+}
+
+/* ==========================================
+   퀴즈 점수
+========================================== */
+
+function saveScore(score){
+
+    localStorage.setItem(
+
+        "score",
+
+        score
+
+    );
+
+}
+
+function loadScore(){
+
+    return Number(
+
+        localStorage.getItem("score") || 0
+
+    );
+
+}
+
+function addScore(){
+
+    saveScore(
+
+        loadScore()+1
+
+    );
+
+}
+
+/* ==========================================
+   초기화
+========================================== */
+
+function resetGuide(){
+
+    localStorage.removeItem("visited");
+
+    localStorage.removeItem("score");
+
+    localStorage.removeItem("currentGuide");
 
 }
