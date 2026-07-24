@@ -82,6 +82,24 @@ function saveWeather(){
 
 }
 
+// ================================
+// 저장된 날씨 불러오기
+// ================================
+
+function loadWeather() {
+
+    const data = localStorage.getItem("weather");
+
+    if (!data) {
+
+        return getWeather();
+
+    }
+
+    return JSON.parse(data);
+
+}
+
 // 시작
 displayWeather();
 
