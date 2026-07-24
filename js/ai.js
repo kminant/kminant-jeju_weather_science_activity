@@ -1,104 +1,67 @@
 /* ==========================================
    ai.js
-   AI 추천 및 관람 포인트
 ========================================== */
 
-function updateAI(){
+function askGuide(question){
 
-    const weather =
-    JSON.parse(localStorage.getItem("weather"));
+    const id = getGuideId();
 
-    if(!weather){
+    const guide = guideManager.get(id);
 
-        return;
+    if(!guide){
 
-    }
-
-    let recommend = "";
-    let tip = "";
-    let course = "";
-
-    // ===========================
-    // 강수
-    // ===========================
-
-    if(weather.rain > 0){
-
-        recommend =
-        "☔ 현재 비가 내리고 있습니다.";
-
-        tip =
-        "우량계를 관찰하며 실제 강수량을 확인해보세요.";
-
-        course =
-        "🌧 지상기상관측장비를 먼저 추천합니다.";
+        return "전시 정보를 찾을 수 없습니다.";
 
     }
 
-    // ===========================
-    // 강풍
-    // ===========================
+    // FAQ 먼저 검색
 
-    else if(weather.wind >= 5){
+    const faq = searchFAQ(guide, question);
 
-        recommend =
-        "🌬 오늘은 바람이 강하게 불고 있습니다.";
+    if(faq){
 
-        tip =
-        "풍향계와 풍속계가 어떻게 움직이는지 살펴보세요.";
-
-        course =
-        "🌳 지상기상관측장비를 먼저 추천합니다.";
+        return faq.answer;
 
     }
 
-    // ===========================
-    // 더위
-    // ===========================
+    // FAQ에 없으면
 
-    else if(weather.feel - weather.temp >= 2){
-
-        recommend =
-        "🥵 체감온도가 실제 기온보다 높습니다.";
-
-        tip =
-        "체감온도 계산기를 체험해보세요.";
-
-        course =
-        "🏢 제주기상과학홍보관을 먼저 추천합니다.";
-
-    }
-
-    // ===========================
-    // 기본
-    // ===========================
-
-    else{
-
-        recommend =
-        "😊 오늘은 기상관측을 체험하기 좋은 날씨입니다.";
-
-        tip =
-        "홍보관에서 기상관측 과정을 먼저 살펴보세요.";
-
-        course =
-        "🏢 제주기상과학홍보관을 먼저 추천합니다.";
-
-    }
-
-    // 출력
-
-    document.getElementById("recommend").innerHTML =
-    recommend;
-
-    document.getElementById("todayTip").innerHTML =
-    tip;
-
-    document.getElementById("courseRecommend").innerHTML =
-    course;
+    return "이 질문은 AI에게 전달됩니다.";
 
 }
 
-// 시작
+function searchFAQ(guide, question){
 
-updateAI();
+    const text = question.replace(/\s/g,"");
+
+    for(const item of guide.faq){
+
+        const q = item.question.replace(/\s/g,"");
+
+        if(text.includes(q) || q.includes(text)){
+
+            return item;
+
+        }
+
+    }
+
+    return null;
+
+}
+
+document
+.getElementById("askBtn")
+.onclick=()=>{
+
+    const q = document
+        .getElementById("question")
+        .value;
+
+    const answer = askGuide(q);
+
+    document
+        .getElementById("answer")
+        .innerHTML = answer;
+
+}
