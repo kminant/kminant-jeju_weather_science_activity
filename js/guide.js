@@ -214,3 +214,73 @@ function checkAnswer(index){
     }
 
 }
+
+/* ==========================================
+   이전 전시
+========================================== */
+
+function movePrev(){
+
+    const id = getGuideId();
+
+    const index = exhibitOrder.indexOf(id);
+
+    if(index <= 0){
+
+        alert("첫 번째 전시입니다.");
+
+        return;
+
+    }
+
+    location.href =
+    "guide.html?id=" +
+    exhibitOrder[index - 1];
+
+}
+
+/* ==========================================
+   다음 전시
+========================================== */
+
+function moveNext(){
+
+    const id = getGuideId();
+
+    const index = exhibitOrder.indexOf(id);
+
+    if(index >= exhibitOrder.length - 1){
+
+        alert("모든 전시를 관람했습니다.");
+
+        return;
+
+    }
+
+    location.href =
+    "guide.html?id=" +
+    exhibitOrder[index + 1];
+
+}
+
+/* ==========================================
+   버튼 연결
+========================================== */
+
+document
+.getElementById("prevBtn")
+.onclick = movePrev;
+
+document
+.getElementById("nextBtn")
+.onclick = moveNext;
+
+/* ==========================================
+   시작
+========================================== */
+
+window.onload = function(){
+
+    loadGuide();
+
+};
