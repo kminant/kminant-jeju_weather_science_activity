@@ -68,6 +68,7 @@ function displayGuide(guide) {
     guide.story;
 
     updateWeatherTip(guide);
+    displayQuiz(guide);
 
 }
 
@@ -120,3 +121,96 @@ function updateWeatherTip(guide) {
 
 }
 
+/* ==========================================
+   퀴즈 표시
+========================================== */
+
+function displayQuiz(guide) {
+
+    const quizArea = document.getElementById("quiz");
+
+    // 퀴즈가 없으면 종료
+    if (!guide.quiz || guide.quiz.length === 0) {
+
+        quizArea.innerHTML = "<p>준비 중입니다.</p>";
+
+        return;
+
+    }
+
+    currentQuiz = guide.quiz[0];
+
+    const quiz = currentQuiz;
+
+    let html = "";
+
+    html += `
+        <div class="quiz-question">
+            ${quiz.question}
+        </div>
+    `;
+
+    quiz.choices.forEach((choice, index) => {
+
+        html += `
+            <button class="quiz-choice"
+                onclick="checkAnswer(${index})">
+                ${choice}
+            </button>
+        `;
+
+    });
+
+    html += `
+        <div id="quizResult"></div>
+    `;
+
+    quizArea.innerHTML = html;
+
+}
+
+/* ==========================================
+   현재 퀴즈 저장
+========================================== */
+
+let currentQuiz = null;
+
+/* ==========================================
+   정답 확인
+========================================== */
+
+function checkAnswer(index){
+
+    const result = document.getElementById("quizResult");
+
+    if(index === currentQuiz.answer){
+
+        result.innerHTML =
+        `
+        <div class="quiz-correct">
+
+        🎉 정답입니다!
+
+        <br><br>
+
+        ${currentQuiz.explanation}
+
+        </div>
+        `;
+
+    }
+
+    else{
+
+        result.innerHTML =
+        `
+        <div class="quiz-wrong">
+
+        ❌ 다시 생각해보세요.
+
+        </div>
+        `;
+
+    }
+
+}
