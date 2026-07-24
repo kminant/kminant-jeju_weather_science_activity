@@ -781,3 +781,34 @@ main{
     }
 
 }
+
+
+/* ===========================
+   홈 버튼
+=========================== */
+
+
+.home-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+    gap: 5px;
+
+    padding: 10px 16px;
+
+    margin: 15px;
+
+    background: #ffffff;
+
+    border-radius: 20px;
+
+    color: #1976d2;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+
+}
