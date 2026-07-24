@@ -1,6 +1,11 @@
-/* ==========================
-   1. 기본 설정
-========================== */
+/* ===================================================
+   제주기상과학홍보관 AI 스마트 가이드
+   Style.css V2
+=================================================== */
+
+/* ===========================
+   1. Reset
+=========================== */
 
 *{
     margin:0;
@@ -8,28 +13,41 @@
     box-sizing:border-box;
 }
 
+/* ===========================
+   2. Color System
+=========================== */
+
 :root{
 
     --main:#0078D7;
+
     --main-light:#EAF5FF;
 
     --green:#2E8B57;
 
+    --orange:#F59E0B;
+
     --yellow:#FFD54F;
+
+    --bg:#F5F8FC;
+
+    --card:#FFFFFF;
 
     --text:#222;
 
     --sub:#666;
 
-    --card:#FFFFFF;
+    --border:#D9E6F2;
 
-    --bg:#F4F8FC;
+    --radius:20px;
 
-    --radius:22px;
-
-    --shadow:0 6px 20px rgba(0,0,0,.08);
+    --shadow:0 8px 24px rgba(0,0,0,.06);
 
 }
+
+/* ===========================
+   3. Body
+=========================== */
 
 body{
 
@@ -42,15 +60,17 @@ body{
 
     color:var(--text);
 
-    line-height:1.5;
+    line-height:1.6;
 
 }
 
+/* ===========================
+   4. Main
+=========================== */
+
 main{
 
-    width:100%;
-
-    max-width:500px;
+    max-width:520px;
 
     margin:auto;
 
@@ -58,19 +78,19 @@ main{
 
 }
 
-
-/* ==========================
-   2. Header
-========================== */
+/* ===========================
+   5. Header
+=========================== */
 
 .header{
 
     background:
 
     linear-gradient(
-    135deg,
-    #0078D7,
-    #3BA3FF);
+        135deg,
+        #0078D7,
+        #39A0FF
+    );
 
     color:white;
 
@@ -78,11 +98,11 @@ main{
 
     padding:45px 20px;
 
-    border-radius:0 0 30px 30px;
+    border-radius:0 0 28px 28px;
 
     box-shadow:
 
-    0 10px 30px rgba(0,120,215,.18);
+    0 12px 28px rgba(0,120,215,.22);
 
 }
 
@@ -98,50 +118,41 @@ main{
 
 .header p{
 
-    font-size:18px;
+    font-size:20px;
+
+    font-weight:600;
+
+}
+
+.header-sub{
+
+    display:block;
+
+    margin-top:12px;
+
+    font-size:15px;
 
     opacity:.95;
 
+    line-height:1.6;
+
 }
 
-
-/* ==========================
-   3. 공통 카드
-========================== */
+/* ===========================
+   6. 공통 Card
+=========================== */
 
 .card{
 
-    background:white;
+    background:var(--card);
 
-    border-radius:22px;
-
-    padding:24px;
+    border-radius:var(--radius);
 
     margin-top:22px;
 
+    padding:24px;
+
     box-shadow:var(--shadow);
-
-    animation:fadeUp .4s ease;
-
-}
-
-@keyframes fadeUp{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(15px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
 
 }
 
@@ -151,9 +162,9 @@ main{
 
     align-items:center;
 
-    gap:8px;
+    gap:10px;
 
-    font-size:24px;
+    font-size:23px;
 
     font-weight:700;
 
@@ -162,69 +173,9 @@ main{
 }
 
 
-/* ==========================
-   4. 오늘의 제주 날씨
-========================== */
-
-.weather-grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:15px;
-
-}
-
-.weather-item{
-
-    background:#F8FBFF;
-
-    border:1px solid #DCEAF7;
-
-    border-radius:18px;
-
-    padding:18px;
-
-    text-align:center;
-
-    transition:.2s;
-
-}
-
-.weather-item:hover{
-
-    transform:translateY(-2px);
-
-}
-
-.weather-icon{
-
-    font-size:28px;
-
-    margin-bottom:8px;
-
-}
-
-.weather-name{
-
-    font-size:15px;
-
-    color:var(--sub);
-
-}
-
-.weather-value{
-
-    margin-top:8px;
-
-    font-size:24px;
-
-    font-weight:700;
-
-    color:var(--main);
-
-}
+/* ===========================
+   7. 오늘의 제주 날씨
+=========================== */
 
 .weather-main{
 
@@ -232,23 +183,31 @@ main{
 
     grid-template-columns:1fr 1fr;
 
-    gap:15px;
+    gap:16px;
 
-    margin-bottom:18px;
+    margin-bottom:20px;
 
 }
 
+/* 큰 기온 카드 */
+
 .temperature{
 
-    background:linear-gradient(135deg,#0078D7,#4FAEFF);
+    background:linear-gradient(
+        180deg,
+        #ffffff,
+        #f8fbff
+    );
 
-    color:white;
+    border:2px solid var(--border);
 
-    border-radius:20px;
+    border-radius:18px;
 
     padding:20px;
 
     text-align:center;
+
+    box-shadow:0 4px 10px rgba(0,0,0,.04);
 
 }
 
@@ -256,465 +215,88 @@ main{
 
     font-size:17px;
 
+    font-weight:600;
+
+    color:var(--sub);
+
+    margin-bottom:10px;
+
 }
 
 .temp-number{
 
-    margin-top:12px;
-
-    font-size:42px;
-
-    font-weight:700;
-
-}
-
-/* ============================= */
-/* AI 추천 */
-/* ============================= */
-
-.recommend{
-
-    background:#f4f9ff;
-
-    border-left:6px solid #0078d7;
-
-    padding:18px;
-
-    border-radius:15px;
-
-    line-height:1.7;
-
-    font-size:18px;
-
-}
-
-
-/* ============================= */
-/* 미션 */
-/* ============================= */
-
-.mission{
-
-    font-size:20px;
-
-    line-height:1.8;
-
-    margin-bottom:20px;
-
-}
-
-.yellow-btn{
-
-    width:100%;
-
-    height:58px;
-
-    border:none;
-
-    border-radius:15px;
-
-    background:#ffd54f;
-
-    font-size:19px;
-
-    cursor:pointer;
-
-    transition:.25s;
-
-}
-
-.yellow-btn:hover{
-
-    transform:scale(1.03);
-
-}
-
-
-/* ============================= */
-/* 관람코스 */
-/* ============================= */
-
-.course-list{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:16px;
-
-}
-
-.course{
-
-    position:relative;
-
-    width:100%;
-
-    min-height:120px;
-
-    background:#fff;
-
-    border:2px solid #dceaf7;
-
-    border-radius:18px;
-
-    padding:20px 24px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:flex-start;
-
-    justify-content:center;
-
-    gap:6px;
-
-    cursor:pointer;
-
-    text-align:left;
-
-    transition:all .25s ease;
-
-    box-shadow:0 4px 12px rgba(0,0,0,.05);
-
-}
-
-.course:hover{
-
-    transform:translateY(-2px);
-
-    box-shadow:0 8px 18px rgba(0,0,0,.08);
-
-}
-
-.course:active{
-
-    transform:scale(.98);
-
-}
-
-/* 선택 */
-
-.course.selected{
-
-    background:#fff;
-
-    border-color:var(--main);
-
-    box-shadow:0 8px 18px rgba(0,120,215,.15);
-
-}
-
-/* 왼쪽 파란 막대 */
-
-.course.selected::before{
-
-    content:"";
-
-    position:absolute;
-
-    left:0;
-
-    top:10px;
-
-    bottom:10px;
-
-    width:6px;
-
-    background:var(--main);
-
-    border-radius:0 6px 6px 0;
-
-}
-
-/* 오른쪽 선택 표시 */
-
-.course.selected::after{
-
-    content:"✓ 선택";
-
-    position:absolute;
-
-    top:16px;
-
-    right:16px;
-
-    font-size:13px;
+    font-size:44px;
 
     font-weight:700;
 
     color:var(--main);
 
-}
-
-/* 아이콘 */
-
-.course-icon{
-
-    font-size:30px;
+    line-height:1;
 
 }
 
-/* 제목 */
-
-.course-title{
-
-    font-size:20px;
-
-    font-weight:700;
-
-}
-
-/* 설명 */
-
-.course-desc{
-
-    font-size:15px;
-
-    color:#666;
-
-    line-height:1.5;
-
-}
-
-/* 시간 */
-
-.course-time{
-
-    margin-top:6px;
-
-    font-size:14px;
-
-    font-weight:600;
-
-    color:var(--main);
-
-}
-
-
-/* ============================= */
-/* 참여자 */
-/* ============================= */
-
-.level-group{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:16px;
-
-}
-
-.level{
-
-    position:relative;
-
-    width:100%;
-
-    min-height:105px;
-
-    background:#fff;
-
-    border:2px solid #dceaf7;
-
-    border-radius:18px;
-
-    padding:18px 22px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:flex-start;
-
-    justify-content:center;
-
-    gap:6px;
-
-    cursor:pointer;
-
-    text-align:left;
-
-    transition:all .25s ease;
-
-    box-shadow:0 4px 12px rgba(0,0,0,.05);
-
-}
-
-.level:hover{
-
-    transform:translateY(-2px);
-
-    box-shadow:0 8px 18px rgba(0,0,0,.08);
-
-}
-
-.level:active{
-
-    transform:scale(.98);
-
-}
-
-/* 선택 */
-
-.level.selected{
-
-    background:#fff;
-
-    border-color:#2E8B57;
-
-    box-shadow:0 8px 18px rgba(46,139,87,.15);
-
-}
-
-/* 왼쪽 초록 막대 */
-
-.level.selected::before{
-
-    content:"";
-
-    position:absolute;
-
-    left:0;
-
-    top:10px;
-
-    bottom:10px;
-
-    width:6px;
-
-    background:#2E8B57;
-
-    border-radius:0 6px 6px 0;
-
-}
-
-/* 오른쪽 선택 표시 */
-
-.level.selected::after{
-
-    content:"✓ 선택";
-
-    position:absolute;
-
-    top:16px;
-
-    right:16px;
-
-    font-size:13px;
-
-    font-weight:700;
-
-    color:#2E8B57;
-
-}
-
-/* 아이콘 */
-
-.level-icon{
-
-    font-size:28px;
-
-}
-
-/* 제목 */
-
-.level-title{
-
-    font-size:20px;
-
-    font-weight:700;
-
-}
-
-/* 설명 */
-
-.level-desc{
-
-    font-size:15px;
-
-    color:#666;
-
-    line-height:1.5;
-
-}
-
-
-/* ============================= */
-/* 시작 버튼 */
-/* ============================= */
-
-#startBtn{
-
-    width:100%;
-
-    height:70px;
-
-    margin:35px 0 60px;
-
-    border:none;
-
-    border-radius:20px;
-
-    background:#0078d7;
-
-    color:white;
-
-    font-size:24px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    transition:.25s;
-
-    box-shadow:0 12px 25px rgba(0,120,215,.35);
-
-}
-
-#startBtn:hover{
-
-    transform:scale(1.03);
-
-}
-
-
-/* ============================= */
-/* 모바일 */
-/* ============================= */
-
-@media(max-width:480px){
-
-.header h1{
-
-    font-size:30px;
-
-}
-
-.section-title{
-
-    font-size:24px;
-
-}
+/* 아래 작은 정보 */
 
 .weather-grid{
 
-    grid-template-columns:1fr 1fr;
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:14px;
 
 }
 
-.course{
+.weather-item{
 
-    min-height:150px;
+    background:#f8fbff;
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    padding:16px;
+
+    text-align:center;
 
 }
 
-.level{
+.weather-icon{
 
-    min-height:135px;
+    font-size:26px;
+
+    margin-bottom:6px;
 
 }
+
+.weather-name{
+
+    font-size:14px;
+
+    color:var(--sub);
+
+}
+
+.weather-value{
+
+    margin-top:6px;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.weather-time{
+
+    margin-top:18px;
+
+    text-align:right;
+
+    font-size:13px;
+
+    color:#888;
 
 }
