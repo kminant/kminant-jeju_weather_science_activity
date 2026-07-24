@@ -5,21 +5,37 @@
 
 const guideManager = {
 
-    exhibits: {},
+    exhibits:{},
 
-    register(exhibit) {
+    register(exhibit){
 
-        this.exhibits[exhibit.id] = exhibit;
+        this.exhibits[exhibit.id]=exhibit;
 
     },
 
-    get(id) {
+    get(id){
 
         return this.exhibits[id];
 
     },
 
-    getAll() {
+    getDescription(id){
+
+        const exhibit=this.get(id);
+
+        if(!exhibit){
+
+            return null;
+
+        }
+
+        const level=loadLevel();
+
+        return exhibit.levels[level];
+
+    },
+
+    getAll(){
 
         return Object.values(this.exhibits);
 
