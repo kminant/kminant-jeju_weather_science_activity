@@ -1,11 +1,12 @@
-/* ===========================
+/* ==========================================
    제주기상과학홍보관 AI 스마트 가이드
    main.js
-=========================== */
+========================================== */
 
-/* ---------------------------
+
+/* ==========================================
    관람코스 (중복 선택)
---------------------------- */
+========================================== */
 
 const courseButtons = document.querySelectorAll(".course");
 
@@ -15,38 +16,38 @@ courseButtons.forEach(button => {
 
         button.classList.toggle("selected");
 
-        saveCourses();
+        updateCourses();
 
     });
 
 });
 
-function saveCourses(){
+function updateCourses(){
 
     const selectedCourses = [];
 
-    document.querySelectorAll(".course.selected").forEach(button=>{
+    document.querySelectorAll(".course.selected").forEach(button => {
 
         selectedCourses.push(button.dataset.course);
 
     });
 
-    saveCourses(selected);
+    saveCourses(selectedCourses);
 
 }
 
 
-/* ---------------------------
-   참여자 (1개만 선택)
---------------------------- */
+/* ==========================================
+   참여자 선택 (1개만 선택)
+========================================== */
 
 const levelButtons = document.querySelectorAll(".level");
 
-levelButtons.forEach(button=>{
+levelButtons.forEach(button => {
 
-    button.addEventListener("click",()=>{
+    button.addEventListener("click", () => {
 
-        levelButtons.forEach(btn=>{
+        levelButtons.forEach(btn => {
 
             btn.classList.remove("selected");
 
@@ -54,20 +55,18 @@ levelButtons.forEach(button=>{
 
         button.classList.add("selected");
 
-        saveLevel(
-          btn.dataset.level
-        );
+        saveLevel(button.dataset.level);
 
     });
 
 });
 
 
-/* ---------------------------
-   저장된 값 불러오기
---------------------------- */
+/* ==========================================
+   저장된 선택 복원
+========================================== */
 
-window.addEventListener("load",()=>{
+window.addEventListener("load", () => {
 
     restoreCourses();
 
@@ -75,12 +74,12 @@ window.addEventListener("load",()=>{
 
 });
 
+
 function restoreCourses(){
 
-    const saved =
-    JSON.parse(localStorage.getItem("courses")) || [];
+    const saved = loadCourses();
 
-    courseButtons.forEach(button=>{
+    courseButtons.forEach(button => {
 
         if(saved.includes(button.dataset.course)){
 
@@ -92,18 +91,16 @@ function restoreCourses(){
 
 }
 
+
 function restoreLevel(){
 
-    const saved =
-    localStorage.getItem("level");
+    const saved = loadLevel();
 
-    if(!saved) return;
-
-    levelButtons.forEach(button=>{
+    levelButtons.forEach(button => {
 
         button.classList.remove("selected");
 
-        if(button.dataset.level===saved){
+        if(button.dataset.level === saved){
 
             button.classList.add("selected");
 
@@ -114,17 +111,15 @@ function restoreLevel(){
 }
 
 
-/* ---------------------------
+/* ==========================================
    AI 힌트
---------------------------- */
+========================================== */
 
-const hintBtn =
-document.getElementById("hintBtn");
+const hintBtn = document.getElementById("hintBtn");
 
-hintBtn.addEventListener("click",()=>{
+hintBtn.addEventListener("click", () => {
 
-    alert(
-`💡 AI 힌트
+    alert(`💡 AI 힌트
 
 체감온도는
 기온뿐 아니라
@@ -135,28 +130,24 @@ hintBtn.addEventListener("click",()=>{
 의 영향을 함께 받아 계산됩니다.
 
 오늘의 체감온도를
-기온과 비교해 보세요!`
-    );
+현재 기온과 비교해 보세요!`);
 
 });
 
 
-/* ---------------------------
+/* ==========================================
    체험 시작
---------------------------- */
+========================================== */
 
-const startBtn =
-document.getElementById("startBtn");
+const startBtn = document.getElementById("startBtn");
 
-startBtn.addEventListener("click",()=>{
+startBtn.addEventListener("click", () => {
 
-    const courses =
-    JSON.parse(localStorage.getItem("courses")) || [];
+    const courses = loadCourses();
 
-    const level =
-    localStorage.getItem("level");
+    const level = loadLevel();
 
-    if(courses.length===0){
+    if(courses.length === 0){
 
         alert("관람코스를 선택해주세요.");
 
@@ -164,7 +155,7 @@ startBtn.addEventListener("click",()=>{
 
     }
 
-    if(level===null){
+    if(!level){
 
         alert("참여자를 선택해주세요.");
 
@@ -172,17 +163,20 @@ startBtn.addEventListener("click",()=>{
 
     }
 
-    location.href="earth.html";
+    // 관람 기록 초기화
+    resetGuide();
+
+    // 첫 번째 전시로 이동
+    location.href = "guide.html?id=timeline";
 
 });
 
 
-/* ---------------------------
-   (임시) AI 추천 문구
---------------------------- */
+/* ==========================================
+   AI 추천 문구
+========================================== */
 
-const recommend =
-document.getElementById("recommend");
+const recommend = document.getElementById("recommend");
 
 recommend.innerHTML = `
 오늘은 <b>체감온도</b>와
