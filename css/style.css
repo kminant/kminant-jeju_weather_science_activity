@@ -784,7 +784,7 @@ main{
 
 
 /* ===========================
-   홈 버튼
+   guide.html 중 홈 버튼
 =========================== */
 
 .home-btn {
@@ -814,7 +814,7 @@ main{
 
 
 /* ===========================
-   AI에게 질문하기 
+   guide.html 중 AI에게 질문하기 
 =========================== */
 
 #question {
@@ -832,5 +832,40 @@ main{
     border: 1px solid #ccc;
 
     box-sizing: border-box;
+
+}
+
+#askBtn {
+
+    display: block;
+
+    margin-left: auto;  /* 오른쪽 정렬 */
+
+    margin-top: 12px;
+
+    padding: 12px 28px;
+
+    background: #1976d2;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 25px;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+
+}
+
+
+#askBtn:hover {
+
+    background: #125ca8;
 
 }
