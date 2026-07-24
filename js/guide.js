@@ -3,12 +3,12 @@
    AI 스마트 도슨트
 ========================================== */
 
-// ================================
-// URL에서 전시물 ID 가져오기
-// 예) guide.html?id=volcano
-// ================================
 
-function getGuideId() {
+/* ==========================================
+   URL에서 전시물 ID 가져오기
+========================================== */
+
+function getGuideId(){
 
     const params = new URLSearchParams(window.location.search);
 
@@ -16,17 +16,18 @@ function getGuideId() {
 
 }
 
-// ================================
-// 현재 전시물 불러오기
-// ================================
 
-function loadGuide() {
+/* ==========================================
+   현재 전시 불러오기
+========================================== */
+
+function loadGuide(){
 
     const id = getGuideId();
 
     const guide = guideManager.get(id);
 
-    if (!guide) {
+    if(!guide){
 
         document.getElementById("title").innerHTML =
         "전시물을 찾을 수 없습니다.";
@@ -35,15 +36,26 @@ function loadGuide() {
 
     }
 
+    // 진행률 표시
+    const current =
+    guideManager.getCurrentIndex(id);
+
+    const total =
+    guideManager.getCount();
+
+    document.getElementById("progress").innerHTML =
+    `📍 전시 ${current} / ${total}`;
+
     displayGuide(guide);
 
 }
 
-// ================================
-// 화면에 출력
-// ================================
 
-function displayGuide(guide) {
+/* ==========================================
+   화면 출력
+========================================== */
+
+function displayGuide(guide){
 
     document.getElementById("zone").innerHTML =
     guide.zoneName;
@@ -57,9 +69,8 @@ function displayGuide(guide) {
     document.getElementById("summary").innerHTML =
     guide.summary;
 
-    // 참여자 수준
-
-    const level = loadLevel();
+    const level =
+    loadLevel();
 
     document.getElementById("description").innerHTML =
     guide.levels[level];
@@ -68,125 +79,131 @@ function displayGuide(guide) {
     guide.story;
 
     updateWeatherTip(guide);
+
     displayQuiz(guide);
 
 }
 
-// ================================
-// 오늘의 날씨와 연결
-// ================================
 
-function updateWeatherTip(guide) {
+/* ==========================================
+   오늘의 날씨와 연결
+========================================== */
 
-    const weather = loadWeather();
+function updateWeatherTip(guide){
+
+    const weather =
+    loadWeather();
 
     let tip = "";
 
-    // 비가 오는 경우
-    if (weather.rain > 0 && guide.todayWeather.rainy) {
+    if(weather.rain > 0 && guide.todayWeather.rainy){
 
-        tip = guide.todayWeather.rainy;
-
-    }
-
-    // 기온이 높은 경우
-    else if (weather.temp >= 30 && guide.todayWeather.hot) {
-
-        tip = guide.todayWeather.hot;
+        tip =
+        guide.todayWeather.rainy;
 
     }
 
-    // 기온이 낮은 경우
-    else if (weather.temp <= 5 && guide.todayWeather.cold) {
+    else if(weather.temp >= 30 && guide.todayWeather.hot){
 
-        tip = guide.todayWeather.cold;
-
-    }
-
-    // 바람이 강한 경우
-    else if (weather.wind >= 8 && guide.todayWeather.windy) {
-
-        tip = guide.todayWeather.windy;
+        tip =
+        guide.todayWeather.hot;
 
     }
 
-    // 기본 설명
-    else {
+    else if(weather.temp <= 5 && guide.todayWeather.cold){
 
-        tip = guide.todayWeather.normal;
+        tip =
+        guide.todayWeather.cold;
 
     }
 
-    document.getElementById("weatherTip").innerHTML = tip;
+    else if(weather.wind >= 8 && guide.todayWeather.windy){
+
+        tip =
+        guide.todayWeather.windy;
+
+    }
+
+    else{
+
+        tip =
+        guide.todayWeather.normal;
+
+    }
+
+    document.getElementById("weatherTip").innerHTML =
+    tip;
 
 }
 
+
 /* ==========================================
-   퀴즈 표시
+   퀴즈
 ========================================== */
 
-function displayQuiz(guide) {
+let currentQuiz = null;
 
-    const quizArea = document.getElementById("quiz");
 
-    // 퀴즈가 없으면 종료
-    if (!guide.quiz || guide.quiz.length === 0) {
+function displayQuiz(guide){
 
-        quizArea.innerHTML = "<p>준비 중입니다.</p>";
+    const quizArea =
+    document.getElementById("quiz");
+
+    if(!guide.quiz || guide.quiz.length===0){
+
+        quizArea.innerHTML =
+        "<p>준비 중입니다.</p>";
 
         return;
 
     }
 
-    currentQuiz = guide.quiz[0];
-
-    const quiz = currentQuiz;
+    currentQuiz =
+    guide.quiz[0];
 
     let html = "";
 
     html += `
-        <div class="quiz-question">
-            ${quiz.question}
-        </div>
+    <div class="quiz-question">
+        ${currentQuiz.question}
+    </div>
     `;
 
-    quiz.choices.forEach((choice, index) => {
+    currentQuiz.choices.forEach((choice,index)=>{
 
         html += `
-            <button class="quiz-choice"
-                onclick="checkAnswer(${index})">
-                ${choice}
-            </button>
+        <button
+        class="quiz-choice"
+        onclick="checkAnswer(${index})">
+
+        ${choice}
+
+        </button>
         `;
 
     });
 
     html += `
-        <div id="quizResult"></div>
+    <div id="quizResult"></div>
     `;
 
-    quizArea.innerHTML = html;
+    quizArea.innerHTML =
+    html;
 
 }
 
-/* ==========================================
-   현재 퀴즈 저장
-========================================== */
-
-let currentQuiz = null;
-
-/* ==========================================
-   정답 확인
-========================================== */
 
 function checkAnswer(index){
 
-    const result = document.getElementById("quizResult");
+    const result =
+    document.getElementById("quizResult");
 
-    if(index === currentQuiz.answer){
+    if(index===currentQuiz.answer){
 
-        result.innerHTML =
-        `
+        addScore();
+
+        result.innerHTML=`
+
         <div class="quiz-correct">
 
         🎉 정답입니다!
@@ -196,24 +213,27 @@ function checkAnswer(index){
         ${currentQuiz.explanation}
 
         </div>
+
         `;
 
     }
 
     else{
 
-        result.innerHTML =
-        `
+        result.innerHTML=`
+
         <div class="quiz-wrong">
 
         ❌ 다시 생각해보세요.
 
         </div>
+
         `;
 
     }
 
 }
+
 
 /* ==========================================
    이전 전시
@@ -221,11 +241,10 @@ function checkAnswer(index){
 
 function movePrev(){
 
-    const id = getGuideId();
+    const prev =
+    guideManager.getPrev(getGuideId());
 
-    const index = exhibitOrder.indexOf(id);
-
-    if(index <= 0){
+    if(prev===null){
 
         alert("첫 번째 전시입니다.");
 
@@ -234,10 +253,10 @@ function movePrev(){
     }
 
     location.href =
-    "guide.html?id=" +
-    exhibitOrder[index - 1];
+    "guide.html?id="+prev;
 
 }
+
 
 /* ==========================================
    다음 전시
@@ -245,11 +264,10 @@ function movePrev(){
 
 function moveNext(){
 
-    const id = getGuideId();
+    const next =
+    guideManager.getNext(getGuideId());
 
-    const index = exhibitOrder.indexOf(id);
-
-    if(index >= exhibitOrder.length - 1){
+    if(next===null){
 
         alert("모든 전시를 관람했습니다.");
 
@@ -258,10 +276,10 @@ function moveNext(){
     }
 
     location.href =
-    "guide.html?id=" +
-    exhibitOrder[index + 1];
+    "guide.html?id="+next;
 
 }
+
 
 /* ==========================================
    버튼 연결
@@ -269,17 +287,20 @@ function moveNext(){
 
 document
 .getElementById("prevBtn")
-.onclick = movePrev;
+.onclick =
+movePrev;
 
 document
 .getElementById("nextBtn")
-.onclick = moveNext;
+.onclick =
+moveNext;
+
 
 /* ==========================================
    시작
 ========================================== */
 
-window.onload = function(){
+window.onload=function(){
 
     loadGuide();
 
